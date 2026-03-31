@@ -6,7 +6,7 @@
 
 面向 **Baklib** 使用场景整理的 **Cursor Agent Skills**：在对话中由模型按 `description` 自动选用，也可手动打开对应 `SKILL.md` 作参考。
 
-公开协作与脱敏、技能边界等约定见根目录 [AGENTS.md](AGENTS.md)。
+本仓库内技能**源码**统一放在根目录 [`skills/`](skills/)（供发布与协作）；使用者在各自项目中再安装到 `.cursor/skills/` 等路径。存放约定见 [AGENTS.md](AGENTS.md)。
 
 ## 使用方式
 
@@ -30,20 +30,20 @@ npx ctx7 skills install /baklib-tools/skills baklib-data-import
 
 ### 2. 手动拷贝
 
-从本仓库的 `.cursor/skills/` 中复制需要的技能目录到本地项目的 `.cursor/skills/`（或你使用的技能加载路径），保持每个技能为独立子目录且内含 `SKILL.md`。
+从本仓库根目录的 `skills/<skill-name>/` 复制到**你自己项目**中的 Cursor 技能目录（常见为 `.cursor/skills/<skill-name>/`，以你使用的加载方式为准），保持每个技能为独立子目录且内含 `SKILL.md`。
 
 ## 技能列表
 
 | 技能 | 安装命令 | 说明 |
 |------|----------|------|
-| [baklib-data-import](.cursor/skills/baklib-data-import/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills baklib-data-import` | 基于 [baklib-tools/importer](https://github.com/baklib-tools/importer) 将本地磁盘文件批量导入 Baklib（DAM，可选站点页） |
-| [nano-banana-pro-prompting](.cursor/skills/nano-banana-pro-prompting/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills nano-banana-pro-prompting` | Gemini 3 Pro Image（Nano Banana Pro）**提示词撰写**与复查（不含脚本/API） |
+| [baklib-data-import](skills/baklib-data-import/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills baklib-data-import` | 基于 [baklib-tools/importer](https://github.com/baklib-tools/importer) 将本地磁盘文件批量导入 Baklib（DAM，可选站点页） |
+| [nano-banana-pro-prompting](skills/nano-banana-pro-prompting/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills nano-banana-pro-prompting` | Gemini 3 Pro Image（Nano Banana Pro）**提示词撰写**与复查（不含脚本/API） |
 
 ## 贡献
 
 新增技能前请先阅读 [AGENTS.md](AGENTS.md)（脱敏、技能边界、可移植性）。然后：
 
-1. 在 `.cursor/skills/<skill-name>/` 下添加 `SKILL.md`（`name` 与目录名建议一致）。
+1. 在仓库根目录 `skills/<skill-name>/` 下添加 `SKILL.md`（`name` 与目录名建议一致）。
 2. 在 frontmatter 的 `description` 中写清**能力**与**触发场景**，便于模型匹配。
 3. 更新本 README 中的技能表。
 
