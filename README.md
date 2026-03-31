@@ -4,6 +4,20 @@
 
 ## 使用方式
 
+有两种常见用法，任选其一（或组合使用）：
+
+### 1. 命令行（Context7）
+
+通过 [Context7 安装说明](https://github.com/upstash/context7#installation) 一键为编辑器配置「CLI + Skills」或 MCP。官方推荐入口为：
+
+```bash
+npx ctx7 setup
+```
+
+针对 Cursor 时可加 `--cursor`；亦可使用 `--claude`、`--opencode` 等目标。向导会完成 OAuth、API Key（可选，见 [context7.com/dashboard](https://context7.com/dashboard)）及技能安装。**具体子命令与参数以 Context7 仓库文档为准**；若上游提供类似 `ctx7 install …` 的安装方式，同样以该文档为准。
+
+### 2. 仓库直连（本仓库 `.cursor/skills/`）
+
 将本仓库克隆或加入工作区后，Cursor 会读取 `.cursor/skills/` 下各技能目录中的 `SKILL.md`。技能元数据中的 `description` 用于判断是否与当前任务相关。
 
 ## 技能列表
