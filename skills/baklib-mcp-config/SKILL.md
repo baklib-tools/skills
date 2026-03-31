@@ -6,7 +6,7 @@ description: 当需要读写 Baklib（KB/站点/DAM/Apps）上的数据时使用
 
 # Cursor MCP 配置指南
 
-本指南说明如何在 Cursor 中启用 Baklib MCP 服务，并规定在你的项目中对 Baklib（知识库/站点/资源库/应用库）的读取与写入**必须优先走 MCP 正规协议**。
+本指南说明如何在 Cursor 中启用 Baklib MCP 服务，并规定在你的本地环境中对 Baklib（知识库/站点/资源库/应用库）的读取与写入**必须优先走 MCP 正规协议**。
 
 MCP 的使用与工具说明文档见：[baklib-mcp-server](https://github.com/xiaohui-zhangxh/baklib-mcp-server)。
 
@@ -45,7 +45,7 @@ Token 配置优先级（从高到低）：
 1. **配置 Token**（二选一，推荐优先用 command ENV）：
    - **方式 A（推荐）**：将 Token 通过 MCP server 的 command 环境变量注入
    - **方式 B**：在 `~/.config/BAKLIB_MCP_TOKEN` 写入一行 `<key>:<secret>`（不要带引号、不要带 `KEY=` 前缀）
-2. **确保 MCP 服务器配置存在**：在你的项目中创建/检查 `.cursor/mcp.json`，确保已声明 Baklib MCP server。
+2. **确保 MCP 服务器配置存在**：检查 `~/.cursor/mcp.json`，确保已声明 Baklib MCP server。
 3. **重启 Cursor**：让 MCP 服务加载最新配置。
 4. **验证工具可用**：在 Cursor 工具列表中应能看到 Baklib MCP 的相关工具（命名以实际实现为准）。
 
@@ -148,7 +148,7 @@ printf '%s' '<key>:<secret>' > ~/.config/BAKLIB_MCP_TOKEN
 
 ### mcp.json 文件
 
-在你的项目中创建/检查 `.cursor/mcp.json`。以下为示例配置（字段与命名以你使用的 MCP server 实现为准）：
+检查 `~/.cursor/mcp.json`。以下为示例配置（字段与命名以你使用的 MCP server 实现为准）：
 
 ```json
 {
@@ -156,11 +156,12 @@ printf '%s' '<key>:<secret>' > ~/.config/BAKLIB_MCP_TOKEN
         "baklib-workspace": {
             "command": "npx",
             "args": [
-                "envmcp",
-                "npx",
                 "-y",
                 "@baklib/baklib-mcp-server@0.2.0"
-            ]
+            ],
+            "env": {
+                "BAKLIB_MCP_TOKEN": "<key>:<secret>"
+            }
         }
     }
 }
@@ -178,12 +179,12 @@ Token 配置优先级（从高到低）：
 1. **不要提交敏感信息**：不要将 `~/.config/BAKLIB_MCP_TOKEN` 提交到版本控制系统
 2. **避免硬编码**：不要把 Token 写进仓库里的脚本/文档/配置文件
 3. **定期更新密钥**：如果 API 密钥泄露或过期，及时更新 Token（ENV 或 `~/.config/BAKLIB_MCP_TOKEN`）
-4. **mcp.json 文件**：`.cursor/mcp.json` 可以提交到版本控制（不包含敏感信息）
+4. **mcp.json 文件**：如果你把 MCP 配置放在 `~/.cursor/mcp.json`（用户目录），同样不建议提交到版本控制；务必确保其中不包含任何敏感信息
 
 ## 📚 相关文件
 
 - **Token 配置文件**：`~/.config/BAKLIB_MCP_TOKEN`（用户目录）
-- **MCP 服务器配置**：`.cursor/mcp.json`（项目目录）
+- **MCP 服务器配置**：`~/.cursor/mcp.json`（用户目录）
 - **Git 忽略规则**：避免将任何 Token 文件提交到 Git
 
 ## 🎯 使用场景
