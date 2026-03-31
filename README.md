@@ -37,6 +37,7 @@ npx ctx7 skills install /baklib-tools/skills baklib-data-import
 | 技能 | 安装命令 | 说明 |
 |------|----------|------|
 | [baklib-data-import](skills/baklib-data-import/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills baklib-data-import` | 基于 [baklib-tools/importer](https://github.com/baklib-tools/importer) 将本地磁盘文件批量导入 Baklib（DAM，可选站点页） |
+| [baklib-mcp-config](skills/baklib-mcp-config/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills baklib-mcp-config` | 使用 Baklib MCP 操作线上数据 |
 | [nano-banana-pro-prompting](skills/nano-banana-pro-prompting/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills nano-banana-pro-prompting` | Gemini 3 Pro Image（Nano Banana Pro）**提示词撰写**与复查（不含脚本/API） |
 | [image-generation](skills/image-generation/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills image-generation` | 图像生成**工作流总览**；须配合 `image-generation-ucloud` / `image-generation-openrouter` 等**服务商子技能**才能实际出图 |
 | [image-generation-ucloud](skills/image-generation-ucloud/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills image-generation-ucloud` | **UCloud ModelVerse** 图像 API（鉴权、端点、模型要点） |
