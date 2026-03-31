@@ -6,6 +6,8 @@
 
 面向 **Baklib** 使用场景整理的 **Cursor Agent Skills**：在对话中由模型按 `description` 自动选用，也可手动打开对应 `SKILL.md` 作参考。
 
+公开协作与脱敏、技能边界等约定见根目录 [AGENTS.md](AGENTS.md)。
+
 ## 使用方式
 
 支持两种方式，可任选其一或组合使用。
@@ -35,10 +37,11 @@ npx ctx7 skills install /baklib-tools/skills baklib-data-import
 | 技能 | 安装命令 | 说明 |
 |------|----------|------|
 | [baklib-data-import](.cursor/skills/baklib-data-import/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills baklib-data-import` | 基于 [baklib-tools/importer](https://github.com/baklib-tools/importer) 将本地磁盘文件批量导入 Baklib（DAM，可选站点页） |
+| [nano-banana-pro-prompting](.cursor/skills/nano-banana-pro-prompting/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills nano-banana-pro-prompting` | Gemini 3 Pro Image（Nano Banana Pro）**提示词撰写**与复查（不含脚本/API） |
 
 ## 贡献
 
-新增技能时：
+新增技能前请先阅读 [AGENTS.md](AGENTS.md)（脱敏、技能边界、可移植性）。然后：
 
 1. 在 `.cursor/skills/<skill-name>/` 下添加 `SKILL.md`（`name` 与目录名建议一致）。
 2. 在 frontmatter 的 `description` 中写清**能力**与**触发场景**，便于模型匹配。
