@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80" role="img" aria-labelledby="title desc">
+  <title id="title">Baklib AI Skills</title>
+  <desc id="desc">Baklib Cursor Agent</desc>
+  <style>
+    .mark { fill: #0d9488; }
+    .mark-accent { fill: #14b8a6; }
+    .word { fill: #0f172a; font: 700 26px system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .sub { fill: #475569; font: 500 13px system-ui, -apple-system, "Segoe UI", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
+    .node { fill: #0d9488; }
+    .edge { stroke: #99f6e4; stroke-width: 2; fill: none; }
+    @media (prefers-color-scheme: dark) {
+      .word { fill: #f8fafc; }
+      .sub { fill: #94a3b8; }
+      .edge { stroke: #134e4a; }
+    }
+  </style>
+  <!-- Icon: connected nodes = skills / graph -->
+  <g transform="translate(6, 10)">
+    <rect width="60" height="60" rx="16" class="mark"/>
+    <circle cx="20" cy="22" r="5" fill="#ecfdf5"/>
+    <circle cx="40" cy="18" r="4" fill="#ccfbf1" opacity="0.9"/>
+    <circle cx="34" cy="42" r="5" fill="#f0fdfa"/>
+    <path d="M23 24 L36 20 M36 22 L36 37 M26 40 L32 39" class="edge"/>
+    <circle cx="20" cy="22" r="2.5" class="node"/>
+    <circle cx="40" cy="18" r="2" class="mark-accent"/>
+    <circle cx="34" cy="42" r="2.5" class="node"/>
+  </g>
+  <text x="84" y="46" class="word">Baklib AI Skills</text>
+  <text x="84" y="66" class="sub">Cursor Agent Skills</text>
+</svg>
