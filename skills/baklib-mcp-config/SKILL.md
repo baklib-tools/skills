@@ -159,7 +159,7 @@ printf '%s' '<key>:<secret>' > ~/.config/BAKLIB_MCP_TOKEN
                 "envmcp",
                 "npx",
                 "-y",
-                "@baklib/baklib-mcp-server"
+                "@baklib/baklib-mcp-server@0.2.0"
             ]
         }
     }
@@ -200,7 +200,7 @@ Token 配置优先级（从高到低）：
 **规则版本**：v3.2  
 **最后更新**：2026-03-31  
 **变更说明**：
-- v2.0：更新为使用 npm 包方式（`@baklib/baklib-mcp-server`），不再使用 HTTP POST 方式。认证信息通过环境变量配置。
+- v2.0：更新为使用 npm 包方式（`@baklib/baklib-mcp-server@0.2.0`），不再使用 HTTP POST 方式。认证信息通过环境变量配置。
 - v3.0：简化配置流程，`mcp.json` 文件固定，用户只需配置 Token（按 Skills 配置规范放置）。
 - v3.1：新增身份认证错误处理规则，当遇到认证错误时提示用户检查 Token 配置。
 - v3.2：更新 Token 配置优先级为 command ENV > `~/.config/BAKLIB_MCP_TOKEN`；移除工作目录 `.config/` 与 `.env.mcp` 配置方式；补充 MCP 使用文档链接。
