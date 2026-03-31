@@ -1,9 +1,8 @@
 ---
 name: nano-banana-pro-prompting
 description: >-
-  为 Gemini 3 Pro Image（社区俗称 Nano Banana / Nano Banana Pro）撰写分步叙述式图像提示词：强调单次 API 请求
-  提示词须自包含、无跨图上下文；图内文字、系列一致性的正确做法（主档案全文重复）；Step 9 内化自检与生成后复查。
-  仅涉及提示词与评审方法。在用户讨论文生图无状态、系列图、错字扭曲时使用。
+  指导使用 Gemini 3 Pro Image（Nano Banana / Nano Banana Pro）生成配图或撰写其出图提示词。
+  在用户要生成 Nano Banana 图片、要写该模型的提示词、或提到 Gemini 3 Pro Image、Nano Banana、Nano Banana Pro 时使用。
 ---
 
 # Nano Banana Pro 提示词工程
