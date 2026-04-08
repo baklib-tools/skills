@@ -5,11 +5,10 @@ description: >-
   或挂载盘上的文件按目录层级迁入 Baklib 资源库（DAM），并可选择同步创建 CMS
   站点资源页。在用户提到批量导入、本地文件进 Baklib、DAM 迁移、importer、
   Excel 导入、路径清单预处理时使用。
----
 
 # Baklib 数据导入（本地磁盘 → Baklib）
 
-官方工具仓库：<https://github.com/baklib-tools/importer>
+官方工具仓库：[https://github.com/baklib-tools/importer](https://github.com/baklib-tools/importer)
 
 **核心流程**：生成 UTF-8 路径清单（每行一个绝对路径）→ **离线**预处理生成 Excel → 在表中可选填写「打标签」「新目录」→ 配置 Open API → 执行导入脚本。
 
@@ -39,6 +38,18 @@ python3 preprocessing/extract-file-paths.py ./file_list.txt --split 10000 --form
 
 预处理**不访问网络**。`--split` 可按行数拆成多个表；输出目录中的 `.xlsx` 供下一步编辑。
 
+**长时间导入期间的增量文件**：若从开始清单到导入完成相隔很久，客户可能在原磁盘继续写入新文件。导入结束后可再扫一遍磁盘，用清单差集只挑出新增路径：
+
+```bash
+python3 preprocessing/compare_file_lists.py \
+  --baseline ./file_list_at_import_start.txt \
+  --current ./file_list_rescan.txt \
+  -o ./new_files_only.txt
+# 或 --scan /数据根目录（清单勿放在该目录内，避免被当成新文件）
+```
+
+得到 `new_files_only.txt` 后，可再执行本技能第 2 步 `extract-file-paths.py` 生成 Excel 并走导入。详见 importer 仓库 `preprocessing/README.md`。
+
 ### 3. 编辑 Excel（可选但常用）
 
 按 `docs/03-excel-guide.md` 理解各列；可批量填写 **打标签**、**新目录**，覆盖或补充仅由路径推导的结果。
@@ -50,7 +61,7 @@ python3 preprocessing/extract-file-paths.py ./file_list.txt --split 10000 --form
 - `site_id`、`api.base_url`、`api.access_key`、`api.secret_key`
 - `import.path_prefix`：去掉盘符/共享根等前缀后，用于对齐 Baklib 中 DAM 目录层级；过深时受 `import.max_depth` 等限制
 - `import.skip_directories`：可选，跳过指定相对路径子树
-- NAS / 路径映射：Excel 中为服务器路径、本机从挂载点读文件时，使用仓库文档中的 **`excel_path_prefix` + `local_path_root`**（见官方 README 与 `docs/`）
+- NAS / 路径映射：Excel 中为服务器路径、本机从挂载点读文件时，使用仓库文档中的 `**excel_path_prefix` + `local_path_root`**（见官方 README 与 `docs/`）
 
 **仅导入资源库（DAM）**：
 
@@ -73,11 +84,13 @@ python3 baklib_import/import_files_to_site.py --excel ./your.xlsx --config confi
 
 ## 文档索引（importer 仓库内）
 
-| 路径 | 用途 |
-|------|------|
-| `docs/00-index.md` | 总入口与阅读顺序 |
-| `docs/01-workflow-sop.md` | 端到端 SOP |
+
+| 路径                             | 用途         |
+| ------------------------------ | ---------- |
+| `docs/00-index.md`             | 总入口与阅读顺序   |
+| `docs/01-workflow-sop.md`      | 端到端 SOP    |
 | `docs/04-import-quickstart.md` | API 导入快速开始 |
-| `docs/05-import-runbook.md` | 命令行参数与行为 |
+| `docs/05-import-runbook.md`    | 命令行参数与行为   |
+
 
 代理协助用户时：若涉及具体列名、Windows 排障或高级参数，应引导阅读上述文档或打开仓库中对应文件，避免臆造未在文档中出现的 API 字段。

@@ -36,7 +36,7 @@ npx ctx7 skills install /baklib-tools/skills baklib-data-import
 
 | 技能 | 安装命令 | 说明 |
 |------|----------|------|
-| [baklib-data-import](skills/baklib-data-import/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills baklib-data-import` | 基于 [baklib-tools/importer](https://github.com/baklib-tools/importer) 将本地磁盘文件批量导入 Baklib（DAM，可选站点页） |
+| [baklib-data-import](skills/baklib-data-import/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills baklib-data-import` | 基于 [baklib-tools/importer](https://github.com/baklib-tools/importer) 将本地磁盘文件批量导入 Baklib（DAM，可选站点页） [使用例子](examples/import-files.md)|
 | [git-commit](skills/git-commit/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills git-commit` | 分析 git 变更、建议拆分提交并生成规范提交信息（Conventional Commits） |
 | [baklib-mcp-config](skills/baklib-mcp-config/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills baklib-mcp-config` | 使用 Baklib MCP 操作线上数据 |
 | [nano-banana-pro-prompting](skills/nano-banana-pro-prompting/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills nano-banana-pro-prompting` | Gemini 3 Pro Image（Nano Banana Pro）**提示词撰写**与复查（不含脚本/API） |
