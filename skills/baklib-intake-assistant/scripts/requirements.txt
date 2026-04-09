@@ -1,0 +1,3 @@
+# Sync helper scripts use only the Python standard library (3.10+).
+# If you extend plan_sync / remote_client with HTTP, add e.g.:
+# httpx>=0.27

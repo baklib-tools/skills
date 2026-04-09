@@ -1,0 +1,27 @@
+{
+  "kb_articles": [
+    {
+      "space_id": "space-demo",
+      "article_id": "art-1",
+      "fingerprint": "rev-a"
+    },
+    {
+      "space_id": "space-demo",
+      "article_id": "art-2",
+      "fingerprint": "rev-1"
+    }
+  ],
+  "dam_entities": [
+    {
+      "entity_id": "dam-1",
+      "fingerprint": "h1"
+    }
+  ],
+  "site_pages": [
+    {
+      "site_id": "site-demo",
+      "page_id": "page-1",
+      "fingerprint": "p1"
+    }
+  ]
+}
