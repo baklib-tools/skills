@@ -30,7 +30,7 @@ description: 将工作区内的零散信息识别、整理后录入 Baklib；优
 
 团队约定：**同步状态与 DAM 标签/合集关系统一走 SQLite**；镜像内容落在 **`baklib_mirror_root`** 下 **`知识库/`、`资源库/`、`站点/`**，正文以 **Markdown** 为主；同步前程序先生成**清单与数量**，**用户确认后再执行**。
 
-1. 记忆文件中配置 `baklib_mirror_root`、`sync_index_path`（必填于该约定下）；可选 `sync_manifest_path`、`dam_taxonomy_path`（导出快照）。  
+1. 记忆文件中路径应与约定一致：项目根下 **`.baklib/sync-state.sqlite`**、**`.baklib/last-sync-manifest.json`**、**`baklib-mirror/`**（与配套脚本「向上搜索 `.baklib`」规则相同）；可选 `dam_taxonomy_path`（导出快照）。  
 2. 录入检索：`知识库/`、`站点/` 下搜 `.md`；DAM **标签与合集名**以 **SQLite**（及 `资源库/<合集>/` 目录名）为准。  
 
 完整目录结构、表划分与流程见 **[local-mirror.md](local-mirror.md)**。无镜像时仍可用 MCP，但应提醒重复标签风险并建议按该规范建同步。
@@ -51,8 +51,8 @@ description: 将工作区内的零散信息识别、整理后录入 Baklib；优
 
 1. **理解输入 + 查本地镜像**  
    区分：纯文本、Markdown/HTML、本地文件路径、多段混合。必要时用只读方式打开工作区文件核对内容（不要臆测未打开的文件内容）。  
-   - 若配置了 `baklib_mirror_root`：在 **`知识库/`**、**`站点/`** 下 **检索** `.md`；若仅配置了旧的 `kb_mirror_root`，则等价于在其目录检索。  
-   - DAM 标签/合集：**以 `sync_index_path` 所指向的 SQLite 为准**（代理可通过用户提供的只读查询/导出文件读取）；若有 `dam_taxonomy_path` 快照则作辅助，冲突以 SQLite 为准。  
+   - 镜像与台账：按项目约定在 **`baklib-mirror/知识库/`**、**`baklib-mirror/站点/`** 检索 `.md`（路径与记忆文件或「自 cwd 向上找 `.baklib`」规则一致）；若仍使用旧的 `kb_mirror_root` 配置则在其目录检索。  
+   - DAM 标签/合集：**以项目根 `.baklib/sync-state.sqlite` 为准**（代理可通过导出或只读查询读取）；若有 `dam_taxonomy_path` 快照则作辅助，冲突以 SQLite 为准。  
    - 若用户要**触发同步**：提醒先跑「清单 → 确认数量 → 再同步」，见 [local-mirror.md](local-mirror.md) 第二节。
 
 2. **整理产出物**  

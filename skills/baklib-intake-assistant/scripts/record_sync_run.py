@@ -13,7 +13,7 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
-from lib.cli_common import add_db_argument, resolve_db_path
+from lib.cli_common import BaklibPathsError, ledger_db_path
 from lib.db import connect
 
 
@@ -23,7 +23,6 @@ def _utc_now_iso() -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    add_db_argument(parser)
     parser.add_argument("--started-at", help="ISO8601 (default: now UTC)")
     parser.add_argument("--finished-at", help="ISO8601 (optional)")
     parser.add_argument("--stats-json", help='JSON object string, e.g. \'{"kb_update":3}\'')
@@ -41,7 +40,12 @@ def main() -> int:
     started = args.started_at or _utc_now_iso()
     stats_s = json.dumps(stats, ensure_ascii=False) if stats is not None else None
 
-    db_path = resolve_db_path(args)
+    try:
+        db_path = ledger_db_path()
+    except BaklibPathsError as e:
+        print(str(e), file=sys.stderr)
+        return 4
+
     conn = connect(db_path)
     try:
         cur = conn.execute(

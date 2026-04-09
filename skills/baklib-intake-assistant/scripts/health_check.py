@@ -15,7 +15,7 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
-from lib.cli_common import add_db_argument, add_mirror_argument, resolve_db_path, resolve_mirror_root
+from lib.cli_common import BaklibPathsError, ledger_db_path, mirror_root_path
 from lib.db import connect
 
 TOP_DIRS = ("知识库", "资源库", "站点")
@@ -56,8 +56,6 @@ def _check_paths(conn, mirror: Path, scope: str) -> tuple[list[str], list[str]]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    add_db_argument(parser)
-    add_mirror_argument(parser)
     parser.add_argument(
         "--scope",
         choices=("all", "kb", "dam", "site", "none"),
@@ -72,8 +70,12 @@ def main() -> int:
     parser.add_argument("--json", action="store_true", help="Emit machine-readable JSON")
     args = parser.parse_args()
 
-    db_path = resolve_db_path(args)
-    mirror = resolve_mirror_root(args)
+    try:
+        db_path = ledger_db_path()
+        mirror = mirror_root_path()
+    except BaklibPathsError as e:
+        print(str(e), file=sys.stderr)
+        return 4
 
     top_ok = {name: (mirror / name).is_dir() for name in TOP_DIRS}
     all_top_exist = all(top_ok.values())

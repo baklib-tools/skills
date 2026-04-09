@@ -21,11 +21,10 @@
 defaults:
   kb_space_id: "<知识库 space_id 占位符>"
   site_id: "<站点 id 占位符>"
-  # 镜像根：其下须有 知识库/、资源库/、站点/ 三个顶层目录（约定见 local-mirror.md）
+  # 镜像根：与项目根下 `.baklib` 同级，固定为 baklib-mirror/（内含 知识库/、资源库/、站点/）
   baklib_mirror_root: "baklib-mirror"
-  # 同步状态与 DAM 标签/合集关联：统一使用 SQLite 3，由同步程序维护
+  # 台账与清单：固定为项目根 `.baklib/sync-state.sqlite`、`.baklib/last-sync-manifest.json`（与 scripts 向上搜索规则一致）
   sync_index_path: ".baklib/sync-state.sqlite"
-  # 可选：本次/上次「同步清单」摘要（JSON 或 Markdown），便于向用户展示数量；权威数据仍在 SQLite
   sync_manifest_path: ".baklib/last-sync-manifest.json"
   # 可选：从 SQLite 导出的 DAM 词表快照；与库内数据冲突时以 SQLite 为准
   dam_taxonomy_path: "docs/baklib/dam-taxonomy.yaml"
@@ -33,7 +32,7 @@ defaults:
   # kb_mirror_root: "baklib-mirror/知识库"
 ```
 
-路径与同步流程见 [local-mirror.md](local-mirror.md)。**配套脚本**（`status` / `health_check` / `plan_sync` 等）见 [scripts/README.md](scripts/README.md)；可将 `baklib_mirror_root`、`sync_index_path` 与脚本的环境变量 `BAKLIB_MIRROR_ROOT`、`BAKLIB_SYNC_INDEX_PATH` 对齐。
+路径与同步流程见 [local-mirror.md](local-mirror.md)。**配套脚本**从 cwd **向上查找** `.baklib/`，使用其中固定文件名；记忆文件中的路径应与该约定一致，见 [scripts/README.md](scripts/README.md)。
 
 ## `rules` 项
 

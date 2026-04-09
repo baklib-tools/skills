@@ -12,20 +12,21 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
-from lib.cli_common import default_manifest_path
+from lib.cli_common import BaklibPathsError, manifest_path
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "manifest",
-        type=Path,
-        nargs="?",
-        default=None,
-        help="Manifest JSON path (default: env BAKLIB_SYNC_MANIFEST_PATH or .baklib/last-sync-manifest.json)",
+    parser = argparse.ArgumentParser(
+        description=__doc__
+        + " 路径固定为：自 cwd 向上找到的首个 `.baklib/last-sync-manifest.json`。"
     )
     args = parser.parse_args()
-    path = (args.manifest or default_manifest_path()).resolve()
+
+    try:
+        path = manifest_path()
+    except BaklibPathsError as e:
+        print(str(e), file=sys.stderr)
+        return 4
 
     if not path.is_file():
         print(f"manifest not found: {path}", file=sys.stderr)

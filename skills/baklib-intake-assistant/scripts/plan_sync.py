@@ -18,7 +18,7 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
-from lib.cli_common import add_db_argument, default_manifest_path, resolve_db_path
+from lib.cli_common import BaklibPathsError, ledger_db_path, manifest_path
 from lib.db import connect
 
 
@@ -122,13 +122,6 @@ def plan_site(conn, remote_list: list[dict[str, Any]]) -> tuple[dict[str, int], 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    add_db_argument(parser)
-    parser.add_argument(
-        "--manifest-out",
-        type=Path,
-        default=None,
-        help="Manifest output path (default: env BAKLIB_SYNC_MANIFEST_PATH or .baklib/last-sync-manifest.json)",
-    )
     parser.add_argument(
         "--from-fixture",
         type=Path,
@@ -149,7 +142,13 @@ def main() -> int:
     dam_remote = raw.get("dam_entities") or []
     site_remote = raw.get("site_pages") or []
 
-    db_path = resolve_db_path(args)
+    try:
+        db_path = ledger_db_path()
+        out = manifest_path()
+    except BaklibPathsError as e:
+        print(str(e), file=sys.stderr)
+        return 4
+
     conn = connect(db_path)
     try:
         s1, z1 = plan_kb(conn, kb_remote)
@@ -170,7 +169,6 @@ def main() -> int:
         "samples": samples,
     }
 
-    out = (args.manifest_out or default_manifest_path()).resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"wrote manifest: {out}")

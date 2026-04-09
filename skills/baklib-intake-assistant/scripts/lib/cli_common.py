@@ -1,54 +1,46 @@
-"""Shared CLI helpers: paths from env/flags (aligned with skill reference.md)."""
+"""Resolve fixed paths: walk upward from cwd to find `.baklib/` under the skill project."""
 
 from __future__ import annotations
 
-import argparse
-import os
 from pathlib import Path
 
-
-def default_db_path() -> Path:
-    raw = os.environ.get("BAKLIB_SYNC_INDEX_PATH") or os.environ.get("SYNC_INDEX_PATH")
-    if raw:
-        return Path(raw).expanduser()
-    return Path(".baklib/sync-state.sqlite")
-
-
-def default_mirror_root() -> Path:
-    raw = os.environ.get("BAKLIB_MIRROR_ROOT")
-    if raw:
-        return Path(raw).expanduser()
-    return Path("baklib-mirror")
+# Fixed filenames inside the discovered `.baklib` directory
+LEDGER_DB_NAME = "sync-state.sqlite"
+MANIFEST_NAME = "last-sync-manifest.json"
+# Mirror tree lives next to `.baklib` (same project root)
+MIRROR_DIR_NAME = "baklib-mirror"
 
 
-def default_manifest_path() -> Path:
-    raw = os.environ.get("BAKLIB_SYNC_MANIFEST_PATH")
-    if raw:
-        return Path(raw).expanduser()
-    return Path(".baklib/last-sync-manifest.json")
+class BaklibPathsError(FileNotFoundError):
+    """Raised when no `.baklib` directory is found walking up from the start path."""
 
 
-def add_db_argument(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument(
-        "--db",
-        type=Path,
-        default=None,
-        help="SQLite ledger path (default: env BAKLIB_SYNC_INDEX_PATH or .baklib/sync-state.sqlite)",
+def find_baklib_dir(start: Path | None = None) -> Path:
+    """
+    Walk upward from `start` (default: cwd) including start and all parents.
+    Return the first path `.../.baklib` that exists as a directory.
+    """
+    cur = (start or Path.cwd()).resolve()
+    for d in [cur, *cur.parents]:
+        candidate = d / ".baklib"
+        if candidate.is_dir():
+            return candidate
+    raise BaklibPathsError(
+        "未找到 `.baklib/` 目录：请从技能项目内运行脚本，并在项目根（或上级包含该根的目录）"
+        "创建 `.baklib` 文件夹后再执行。例如：mkdir -p .baklib"
     )
 
 
-def add_mirror_argument(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument(
-        "--mirror-root",
-        type=Path,
-        default=None,
-        help="Mirror root with 知识库/, 资源库/, 站点/ (env BAKLIB_MIRROR_ROOT or ./baklib-mirror)",
-    )
+def ledger_db_path(start: Path | None = None) -> Path:
+    """`<project>/.baklib/sync-state.sqlite`"""
+    return find_baklib_dir(start) / LEDGER_DB_NAME
 
 
-def resolve_db_path(args: argparse.Namespace) -> Path:
-    return (args.db or default_db_path()).resolve()
+def manifest_path(start: Path | None = None) -> Path:
+    """`<project>/.baklib/last-sync-manifest.json`"""
+    return find_baklib_dir(start) / MANIFEST_NAME
 
 
-def resolve_mirror_root(args: argparse.Namespace) -> Path:
-    return (args.mirror_root or default_mirror_root()).resolve()
+def mirror_root_path(start: Path | None = None) -> Path:
+    """`<project>/baklib-mirror` — 与 `.baklib` 同级，内含 知识库/、资源库/、站点/`"""
+    return find_baklib_dir(start).parent / MIRROR_DIR_NAME

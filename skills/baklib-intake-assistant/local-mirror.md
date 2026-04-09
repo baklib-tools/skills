@@ -34,9 +34,10 @@
 本技能目录下 [`scripts/`](scripts/) 提供一组**可复用 CLI**（Python 3.10+，默认仅标准库），与上表路径约定对齐：
 
 - 打开数据库时由 [`scripts/lib/db.py`](scripts/lib/db.py) **`ensure_schema`** 自动建表/迁移（`PRAGMA user_version`，当前版本 `1`），无需单独 `init_db` / `schema.sql`。  
-- **推荐顺序**：任意脚本首次连接建库 → 日常 `health_check.py` / `status.py` → `plan_sync.py --from-fixture …`（或接入你们自己的远端拉取）生成清单 → 用户确认后再执行实际拉取与写 `.md` → 可用 `record_sync_run.py` 记入 `sync_runs`。
+- **路径**：脚本从 **cwd 向上**查找 **`.baklib/`**，固定使用其中的 `sync-state.sqlite` 与 `last-sync-manifest.json`；镜像根为 **`.baklib` 同级**的 `baklib-mirror/`（不可再通过环境变量改路径，见 [`scripts/README.md`](scripts/README.md)）。  
+- **推荐顺序**：项目根 `mkdir -p .baklib` → 任意脚本首次连接建库 → 日常 `health_check.py` / `status.py` → `plan_sync.py --from-fixture …`（或接入远端拉取）→ 用户确认后再拉取写 `.md` → `record_sync_run.py` 记入 `sync_runs`。
 
-环境变量与命令说明见 [`scripts/README.md`](scripts/README.md)；Fixture 示例见 [`scripts/fixtures/example-remote-index.json`](scripts/fixtures/example-remote-index.json)。
+Fixture 示例见 [`scripts/fixtures/example-remote-index.json`](scripts/fixtures/example-remote-index.json)。
 
 ### 2.3 镜像根目录与落盘格式（Markdown）
 

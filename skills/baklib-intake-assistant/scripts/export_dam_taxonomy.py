@@ -11,7 +11,7 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
-from lib.cli_common import add_db_argument, resolve_db_path
+from lib.cli_common import BaklibPathsError, ledger_db_path
 from lib.db import connect
 
 
@@ -23,10 +23,13 @@ def _yaml_escape(s: str) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    add_db_argument(parser)
     parser.add_argument("-o", "--out", type=Path, help="Output file (default: stdout)")
     args = parser.parse_args()
-    db_path = resolve_db_path(args)
+    try:
+        db_path = ledger_db_path()
+    except BaklibPathsError as e:
+        print(str(e), file=sys.stderr)
+        return 4
 
     conn = connect(db_path)
     try:
