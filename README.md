@@ -32,6 +32,22 @@ npx ctx7 skills install /baklib-tools/skills baklib-data-import
 
 从本仓库根目录的 `skills/<skill-name>/` 复制到**你自己项目**中的 Cursor 技能目录（常见为 `.cursor/skills/<skill-name>/`，以你使用的加载方式为准），保持每个技能为独立子目录且内含 `SKILL.md`。
 
+## 外部技能（Git Submodule）
+
+除根目录 [`skills/`](skills/) 下由本仓库**直接维护**的发布技能外，仓库在 **`external-skills/`** 中通过 **Git Submodule** 引入外部社区的优质技能、设计规范索引等资源，便于本地查阅或对照参考（**不等同**于 `skills/` 下的安装目标；安装到 Cursor 时仍以 `skills/<name>/` 为准）。
+
+克隆本仓库后若需拉取子模块内容，请执行：
+
+```bash
+git submodule update --init --recursive
+```
+
+| 子模块 | 说明 |
+| ------ | ---- |
+| [awesome-design-md](external-skills/awesome-design-md/README.md) | 来自 [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) 的设计相关 Markdown / 品牌设计参考索引 |
+
+新增或更新子模块时请在变更说明中写清来源与用途；引用或摘录内容仍须遵守 [AGENTS.md](AGENTS.md) 中的脱敏与可移植性约定。
+
 ## 技能列表
 
 
@@ -54,6 +70,7 @@ npx ctx7 skills install /baklib-tools/skills baklib-data-import
 1. 在仓库根目录 `skills/<skill-name>/` 下添加 `SKILL.md`（`name` 与目录名建议一致）。
 2. 在 frontmatter 的 `description` 中写清**能力**与**触发场景**，便于模型匹配。
 3. 更新本 README 中的技能表。
+4. 若从外部仓库以子模块形式纳入参考资源，放在 `external-skills/` 并同步更新上文「外部技能」表格。
 
 编写约定可参考 Cursor 的 Skill 文档（如官方「创建 Skill」指南）。
 
