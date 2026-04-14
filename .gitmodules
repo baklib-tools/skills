@@ -1,3 +1,6 @@
 [submodule "external-skills/awesome-design-md"]
 	path = external-skills/awesome-design-md
 	url = https://github.com/VoltAgent/awesome-design-md.git
+[submodule "external-skills/buffett-skills"]
+	path = external-skills/buffett-skills
+	url = https://github.com/agi-now/buffett-skills

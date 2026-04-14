@@ -45,6 +45,7 @@ git submodule update --init --recursive
 | 子模块 | 说明 |
 | ------ | ---- |
 | [awesome-design-md](external-skills/awesome-design-md/README.md) | 来自 [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) 的设计相关 Markdown / 品牌设计参考索引 |
+| [buffett-skills](external-skills/buffett-skills/README.md) | 来自 [agi-now/buffett-skills](https://github.com/agi-now/buffett-skills) 的巴菲特投资思维框架相关技能与参考文档（[README 中文版](external-skills/buffett-skills/README.zh.md)） |
 
 新增或更新子模块时请在变更说明中写清来源与用途；引用或摘录内容仍须遵守 [AGENTS.md](AGENTS.md) 中的脱敏与可移植性约定。
 
