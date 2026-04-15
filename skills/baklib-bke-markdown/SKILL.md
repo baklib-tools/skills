@@ -1,5 +1,5 @@
 ---
-name: bke-markdown-authoring
+name: baklib-bke-markdown
 description: Self-contained guide for writing Baklib BKE Markdown (L1/L2, DAM dam-id, file colon-syntax, link cards, fragments, embeds, tables). Use when authoring or importing BKE Markdown, inserting DAM assets, or resolving DAM ids via MCP; not for editor implementation or maintaining product docs repos.
 ---
 

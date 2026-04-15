@@ -3,7 +3,7 @@
 UCloud ModelVerse 图像生成（参考实现）
 
 仅处理 UCloud 文档中的模型与参数；模型 ID、尺寸别名以 UCloud 当前文档为准。
-依赖：requests。安装本技能目录到项目的 Cursor 技能路径后，在项目根执行。
+依赖：requests。将本技能目录安装到项目的技能路径（以所用工具文档为准）后，在项目根执行。
 
 密钥（读取顺序）：优先项目根 .config/UCLOUD_API_KEY，其次环境变量 UCLOUD_API_KEY。
 """

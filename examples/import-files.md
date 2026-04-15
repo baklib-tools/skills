@@ -1,6 +1,6 @@
 # 示例：用 **baklib-data-import** 技能完成本地文件批量导入
 
-本文档配合截图，演示在 Cursor 等编辑器里如何通过 **baklib-data-import** 技能，把「路径清单 → Excel → Open API 导入」这条流程跑通。技能全名：`baklib-data-import`（仓库路径：`skills/skills/baklib-data-import/SKILL.md`）。
+本文档配合截图，演示在**已加载本技能的 AI 代理环境**中如何通过 **baklib-data-import** 技能，把「路径清单 → Excel → Open API 导入」这条流程跑通。技能全名：`baklib-data-import`（仓库路径：`skills/skills/baklib-data-import/SKILL.md`）。
 
 下图已**内嵌为 Base64**，单文件即可预览，不依赖同级 `images/` 目录（仓库中仍保留原 PNG 便于单独引用）。
 

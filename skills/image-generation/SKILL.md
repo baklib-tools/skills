@@ -76,7 +76,7 @@ description: >-
 | UCloud ModelVerse | [`image-generation-ucloud/scripts/generate_ucloud_image.py`](../image-generation-ucloud/scripts/generate_ucloud_image.py) | `requests` |
 | OpenRouter | [`image-generation-openrouter/scripts/generate_openrouter_image.py`](../image-generation-openrouter/scripts/generate_openrouter_image.py) | `requests` |
 
-将对应技能目录复制到你项目中的 Cursor 技能路径后，在项目根执行；脚本通过向上查找含 **`.config`** 的目录定位密钥文件，详见各脚本 `--help`。本仓库**不提供**本地离线出图示例脚本（能力因环境差异大，由用户自行选用工具链）。
+将对应技能目录安装到你项目中的**技能路径**（以所用工具文档为准）后，在项目根执行；脚本通过向上查找含 **`.config`** 的目录定位密钥文件，详见各脚本 `--help`。本仓库**不提供**本地离线出图示例脚本（能力因环境差异大，由用户自行选用工具链）。
 
 **总技能目录不再提供**「三合一」聚合脚本；换后端时换目录与脚本即可。
 
