@@ -14,19 +14,33 @@
 
 ### 1. 命令行安装（推荐）
 
-在已安装 Node.js 的环境中执行（将 `<skill-name>` 换成下表中的技能目录名）：
+在已安装 Node.js 的环境中执行。
+
+查看本仓库已发布技能列表：
 
 ```bash
-npx ctx7 skills install /baklib-tools/skills <skill-name>
+npx skills add baklib-tools/skills --list
 ```
 
-示例：安装数据导入技能：
+安装单个技能（将 `<skill-name>` 换成下表中的技能目录名）：
 
 ```bash
-npx ctx7 skills install /baklib-tools/skills baklib-data-import
+npx skills add baklib-tools/skills --skill <skill-name>
 ```
 
-具体行为与参数以 [Context7](https://github.com/upstash/context7#installation) 当前 CLI 文档为准。
+示例：同时安装 **baklib-mcp** 与 **baklib-bke-markdown**（常用组合）：
+
+```bash
+npx skills add baklib-tools/skills --skill baklib-mcp --skill baklib-bke-markdown
+```
+
+示例：仅安装数据导入技能：
+
+```bash
+npx skills add baklib-tools/skills --skill baklib-data-import
+```
+
+具体行为与参数以 `skills` 包 CLI 为准（可执行 `npx skills --help` 查看）。
 
 ### 2. 手动拷贝
 
@@ -54,15 +68,15 @@ git submodule update --init --recursive
 
 | 技能                                                                         | 安装命令                                                                       | 说明                                                                                                                                                                                                                                          |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [baklib-data-import](skills/baklib-data-import/SKILL.md)                   | `npx ctx7 skills install /baklib-tools/skills baklib-data-import`          | 基于 [baklib-tools/importer](https://github.com/baklib-tools/importer) 将本地磁盘文件批量导入 Baklib（DAM，可选站点页） [使用例子](examples/import-files.md)                                                                                                         |
-| [git-commit](skills/git-commit/SKILL.md)                                   | `npx ctx7 skills install /baklib-tools/skills git-commit`                  | 分析 git 变更、建议拆分提交并生成规范提交信息（Conventional Commits）                                                                                                                                                                                             |
-| [baklib-mcp](skills/baklib-mcp/SKILL.md)                                   | `npx ctx7 skills install /baklib-tools/skills baklib-mcp`                  | Baklib MCP：鉴权、优先 MCP 操作 KB/站点/DAM；站点页 `signed_id` 经 MCP 按 purpose（表单 `dynamic_form`）获取                                                                                                                                 |
-| [baklib-intake-assistant](skills/baklib-intake-assistant/SKILL.md)         | `npx ctx7 skills install /baklib-tools/skills baklib-intake-assistant`     | 结合 Baklib MCP 做录入；约定镜像根下 `知识库/`、`资源库/`、`站点/` 存 Markdown，**SQLite** 台账；含 [scripts](skills/baklib-intake-assistant/scripts/README.md)（`status`/`health_check`/`plan_sync` 等），见 [local-mirror](skills/baklib-intake-assistant/local-mirror.md) |
-| [baklib-bke-markdown](skills/baklib-bke-markdown/SKILL.md)                 | `npx ctx7 skills install /baklib-tools/skills baklib-bke-markdown`        | Baklib **BKE Markdown** 撰写与导入（L1/L2、`dam-id`、文件卡片冒号语法、链接卡片、片段/分栏/嵌入等）；可配合 MCP 解析 DAM 编号                                                                                                                                 |
-| [nano-banana-pro-prompting](skills/nano-banana-pro-prompting/SKILL.md)     | `npx ctx7 skills install /baklib-tools/skills nano-banana-pro-prompting`   | Gemini 3 Pro Image（Nano Banana Pro）**提示词撰写**与复查（不含脚本/API）                                                                                                                                                                                   |
-| [image-generation](skills/image-generation/SKILL.md)                       | `npx ctx7 skills install /baklib-tools/skills image-generation`            | 图像生成**工作流总览**；须配合 `image-generation-ucloud` / `image-generation-openrouter` 等**服务商子技能**才能实际出图                                                                                                                                               |
-| [image-generation-ucloud](skills/image-generation-ucloud/SKILL.md)         | `npx ctx7 skills install /baklib-tools/skills image-generation-ucloud`     | **UCloud ModelVerse** 图像 API（鉴权、端点、模型要点）                                                                                                                                                                                                    |
-| [image-generation-openrouter](skills/image-generation-openrouter/SKILL.md) | `npx ctx7 skills install /baklib-tools/skills image-generation-openrouter` | **OpenRouter** 出图（chat/completions、modalities 等）                                                                                                                                                                                            |
+| [baklib-data-import](skills/baklib-data-import/SKILL.md)                   | `npx skills add baklib-tools/skills --skill baklib-data-import`          | 基于 [baklib-tools/importer](https://github.com/baklib-tools/importer) 将本地磁盘文件批量导入 Baklib（DAM，可选站点页） [使用例子](examples/import-files.md)                                                                                                         |
+| [git-commit](skills/git-commit/SKILL.md)                                   | `npx skills add baklib-tools/skills --skill git-commit`                  | 分析 git 变更、建议拆分提交并生成规范提交信息（Conventional Commits）                                                                                                                                                                                             |
+| [baklib-mcp](skills/baklib-mcp/SKILL.md)                                   | `npx skills add baklib-tools/skills --skill baklib-mcp`                  | Baklib MCP：鉴权、优先 MCP 操作 KB/站点/DAM；站点页 `signed_id` 经 MCP 按 purpose（表单 `dynamic_form`）获取                                                                                                                                 |
+| [baklib-intake-assistant](skills/baklib-intake-assistant/SKILL.md)         | `npx skills add baklib-tools/skills --skill baklib-intake-assistant`     | 结合 Baklib MCP 做录入；约定镜像根下 `知识库/`、`资源库/`、`站点/` 存 Markdown，**SQLite** 台账；含 [scripts](skills/baklib-intake-assistant/scripts/README.md)（`status`/`health_check`/`plan_sync` 等），见 [local-mirror](skills/baklib-intake-assistant/local-mirror.md) |
+| [baklib-bke-markdown](skills/baklib-bke-markdown/SKILL.md)                 | `npx skills add baklib-tools/skills --skill baklib-bke-markdown`        | Baklib **BKE Markdown** 撰写与导入（L1/L2、`dam-id`、文件卡片冒号语法、链接卡片、片段/分栏/嵌入等）；可配合 MCP 解析 DAM 编号                                                                                                                                 |
+| [nano-banana-pro-prompting](skills/nano-banana-pro-prompting/SKILL.md)     | `npx skills add baklib-tools/skills --skill nano-banana-pro-prompting`   | Gemini 3 Pro Image（Nano Banana Pro）**提示词撰写**与复查（不含脚本/API）                                                                                                                                                                                   |
+| [image-generation](skills/image-generation/SKILL.md)                       | `npx skills add baklib-tools/skills --skill image-generation`            | 图像生成**工作流总览**；须配合 `image-generation-ucloud` / `image-generation-openrouter` 等**服务商子技能**才能实际出图                                                                                                                                               |
+| [image-generation-ucloud](skills/image-generation-ucloud/SKILL.md)         | `npx skills add baklib-tools/skills --skill image-generation-ucloud`     | **UCloud ModelVerse** 图像 API（鉴权、端点、模型要点）                                                                                                                                                                                                    |
+| [image-generation-openrouter](skills/image-generation-openrouter/SKILL.md) | `npx skills add baklib-tools/skills --skill image-generation-openrouter` | **OpenRouter** 出图（chat/completions、modalities 等）                                                                                                                                                                                            |
 
 
 ## 贡献

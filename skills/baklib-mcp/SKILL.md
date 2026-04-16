@@ -23,7 +23,8 @@ description: 说明如何配置并使用 Baklib MCP：涵盖鉴权与 MCP 客户
 
 - **若无法确认**已安装/已加载：**不得**仅凭本文件与通用 Markdown 臆写 BKE 扩展语法；须**暂停**正文层面的解析与撰写，**先提示用户**安装并（按所用工具说明）重新加载技能后再继续。
 - **安装方式**（与仓库 [README](https://github.com/baklib-tools/skills/blob/main/README.md) 一致）：
-  - **推荐（Context7 CLI）**：`npx ctx7 skills install /baklib-tools/skills baklib-bke-markdown`
+  - **推荐（skills CLI）**：`npx skills add baklib-tools/skills --skill baklib-bke-markdown`；若与本技能一并安装，可用：`npx skills add baklib-tools/skills --skill baklib-mcp --skill baklib-bke-markdown`
+  - **查看列表**：`npx skills add baklib-tools/skills --list`
   - **手动**：从仓库目录 [`skills/baklib-bke-markdown/`](https://github.com/baklib-tools/skills/tree/main/skills/baklib-bke-markdown) 复制到**你自己项目**中由工具指定的技能安装路径，保持内含 `SKILL.md`。
 
 ### 格式约定

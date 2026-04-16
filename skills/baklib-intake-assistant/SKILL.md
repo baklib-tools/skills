@@ -1,7 +1,7 @@
 ---
-
-## name: baklib-intake-assistant
+name: baklib-intake-assistant
 description: 将工作区内的零散信息识别、整理后录入 Baklib；优先查 baklib_mirror_root 下 知识库/资源库/站点 的 Markdown 镜像与 SQLite 台账中的 DAM 标签/合集，并按路由指南判断 KB/DAM/站点。在用户要求录入、归档、同步、选存放位置或避免重复标签时使用；须已启用 Baklib MCP。任何写入前须列出拟执行操作并征得用户确认。
+---
 
 # Baklib 信息录入助手（工作区 + MCP）
 
