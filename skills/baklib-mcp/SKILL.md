@@ -1,6 +1,6 @@
 ---
 name: baklib-mcp
-description: 说明如何配置并使用 Baklib MCP：涵盖鉴权与 MCP 客户端配置、优先经 MCP 读写知识库/站点/DAM；站点页 template_variables 所需 DAM signed_id 经 MCP 按 purpose 获取（表单为 dynamic_form）或与 dam_upload_entity 返回值组合。写入 DAM 内容片段、知识库正文、站点 BKE 富文本时统一使用 BKE Markdown，扩展语法以配套技能 baklib-bke-markdown 为准。在用户配置 Baklib MCP、操作线上 Baklib 或写入站点资源字段时使用；任何写入前须经用户确认。
+description: 说明如何配置并使用 Baklib MCP：涵盖鉴权与 MCP 客户端配置、优先经 MCP 读写知识库/站点/DAM；站点页 template_variables 所需 DAM signed_id 经 MCP 按 purpose 获取（表单为 dynamic_form）或与 dam_upload_entity 返回值组合。写入 DAM 内容片段、知识库正文、站点 BKE 富文本时统一使用 BKE Markdown；解析或撰写 BKE Markdown 前须确认已安装并加载配套技能 baklib-bke-markdown，否则先提示用户按仓库说明安装。在用户配置 Baklib MCP、操作线上 Baklib 或写入站点资源字段时使用；任何写入前须经用户确认。
 ---
 
 # Baklib MCP（组合使用指南）
@@ -17,7 +17,18 @@ description: 说明如何配置并使用 Baklib MCP：涵盖鉴权与 MCP 客户
 
 ## 📝 写入内容格式：统一使用 BKE Markdown
 
-通过 MCP 向 Baklib **写入**或**回填**下列内容时，**正文一律采用 BKE Markdown**：即在 **标准 Markdown / GFM** 之上，使用 Baklib BKE 编辑器约定的**扩展写法**（圆括号第三段属性、`dam-id`、文件卡片冒号语法、L2 HTML 注释块如 `link-card` / `fragment` / 嵌入等）。**完整语法、示例与避坑清单**见本仓库技能 **[baklib-bke-markdown](../baklib-bke-markdown/SKILL.md)**；撰写或改写正文时应**打开并对照该技能**，不要仅凭「通用 Markdown」臆测扩展格式。各 MCP 工具的字段名仍以工具 schema 为准。
+### 配套技能 `baklib-bke-markdown`（强制）
+
+在通过 MCP **读取**需按 BKE 语义解析的正文（例如准备对照、改写或回填），或 **撰写/改写/回填** 下文表中任一 **BKE Markdown** 内容之前，代理须**先确认**当前会话已加载 **[baklib-bke-markdown](https://github.com/baklib-tools/skills/blob/main/skills/baklib-bke-markdown/SKILL.md)** 技能（例如：宿主已安装该技能且可在技能列表中打开其 `SKILL.md`，或用户已明确引用该技能）。
+
+- **若无法确认**已安装/已加载：**不得**仅凭本文件与通用 Markdown 臆写 BKE 扩展语法；须**暂停**正文层面的解析与撰写，**先提示用户**安装并（按所用工具说明）重新加载技能后再继续。
+- **安装方式**（与仓库 [README](https://github.com/baklib-tools/skills/blob/main/README.md) 一致）：
+  - **推荐（Context7 CLI）**：`npx ctx7 skills install /baklib-tools/skills baklib-bke-markdown`
+  - **手动**：从仓库目录 [`skills/baklib-bke-markdown/`](https://github.com/baklib-tools/skills/tree/main/skills/baklib-bke-markdown) 复制到**你自己项目**中由工具指定的技能安装路径，保持内含 `SKILL.md`。
+
+### 格式约定
+
+通过 MCP 向 Baklib **写入**或**回填**下列内容时，**正文一律采用 BKE Markdown**：即在 **标准 Markdown / GFM** 之上，使用 Baklib BKE 编辑器约定的**扩展写法**（圆括号第三段属性、`dam-id`、文件卡片冒号语法、L2 HTML 注释块如 `link-card` / `fragment` / 嵌入等）。**完整语法、示例与避坑清单**见技能 **[baklib-bke-markdown](https://github.com/baklib-tools/skills/blob/main/skills/baklib-bke-markdown/SKILL.md)**；撰写或改写正文时应**打开并对照该技能**，不要仅凭「通用 Markdown」臆测扩展格式。各 MCP 工具的字段名仍以工具 schema 为准。
 
 | 场景 | 说明 |
 |------|------|
@@ -210,7 +221,7 @@ Token 配置优先级（从高到低）：
 
 ## 📚 相关文件
 
-- **BKE Markdown 撰写（扩展语法）**：[../baklib-bke-markdown/SKILL.md](../baklib-bke-markdown/SKILL.md)（与本技能同处 `skills/` 目录；安装到使用者项目后的路径以**所用技能的加载方式**为准，参见仓库 [AGENTS.md](../../AGENTS.md)）
+- **BKE Markdown 撰写（扩展语法）**：[baklib-bke-markdown/SKILL.md](https://github.com/baklib-tools/skills/blob/main/skills/baklib-bke-markdown/SKILL.md)（单独安装技能时以宿主文档为准；仓库协作约定见 [AGENTS.md](https://github.com/baklib-tools/skills/blob/main/AGENTS.md)）
 - **Token 配置文件**：`~/.config/BAKLIB_MCP_TOKEN`（用户目录）
 - **MCP 服务器配置**：由 MCP 宿主决定（参阅该客户端的 MCP 设置文档）
 - **Git 忽略规则**：避免将任何 Token 文件提交到 Git
@@ -224,20 +235,3 @@ Token 配置优先级（从高到低）：
 - 使用 MCP 工具操作 Baklib 应用库
 - **组合流程**：DAM 上传或按 entity 取 **`signed_id`**（**`dynamic_form`**）→ 写入站点页 **`template_variables`**
 - 执行需要调用 Baklib MCP 服务的指令（如「同步需求到 MCP 知识库」）
-
----
-
-**规则版本**：v4.4  
-**最后更新**：2026-04-15  
-**变更说明**：
-
-- v4.4：去除对**单一编辑器品牌**的绑定表述，改为**任意 MCP 宿主**通用说明；`mcp.json` 路径改为「因客户端而异」+ 结构示例；重载步骤改为「重载 MCP / 刷新连接」。
-- v4.3：优化 frontmatter **description**：改为技能自述语气，补回 **server ≥0.4.0** 锚点；将「本仓库」改为**配套技能 baklib-bke-markdown**。
-- v4.2：将写入格式从泛称「Markdown」明确为 **BKE Markdown**，并**交叉引用**本仓库 **[baklib-bke-markdown](../baklib-bke-markdown/SKILL.md)** 作为扩展语法与撰写依据；在「相关文件」「使用场景」中补充关联。
-- v4.1：明确 **DAM 内容片段**、**知识库文档内容**、**站点页面 BKE 富文本** 在通过 MCP **写入**时统一使用 **Markdown**；说明读回格式可能与写入约定不同。
-- v2.0：更新为使用 npm 包方式（`@baklib/baklib-mcp-server@0.2.0`），不再使用 HTTP POST 方式。认证信息通过环境变量配置。
-- v3.0：简化配置流程，`mcp.json` 文件固定，用户只需配置 Token（按 Skills 配置规范放置）。
-- v3.1：新增身份认证错误处理规则，当遇到认证错误时提示用户检查 Token 配置。
-- v3.2：更新 Token 配置优先级为 command ENV > `~/.config/BAKLIB_MCP_TOKEN`；移除工作目录 `.config/` 与 `.env.mcp` 配置方式；补充 MCP 使用文档链接。
-- v3.3–v3.5：曾文档化通过 Open API 在仅有 `entity_id` 时换取 `signed_id`；已由 MCP 能力替代。
-- v4.0：**依赖 `baklib-mcp-server` ≥0.4.0**，站点页 DAM **`signed_id`** 一律经 **MCP** 按 **purpose**（表单为 **`dynamic_form`**）获取；**删除** Open API 手写补缺说明；示例包版本更新为 **0.4.0**。

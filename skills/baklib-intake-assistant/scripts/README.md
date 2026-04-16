@@ -1,6 +1,6 @@
 # Baklib 镜像同步辅助脚本
 
-与技能 [`../local-mirror.md`](../local-mirror.md) 约定一致：SQLite 台账、镜像根下 **`知识库/`**、**`资源库/`**、**`站点/`**。  
+与技能 [`local-mirror.md`](https://github.com/baklib-tools/skills/blob/main/skills/baklib-intake-assistant/local-mirror.md) 约定一致：SQLite 台账、镜像根下 **`知识库/`**、**`资源库/`**、**`站点/`**。  
 **首次运行任意会打开数据库的脚本时，会自动建表/迁移**（`lib/db.py` 中 `PRAGMA user_version`），无需单独执行 `init_db` 或 `schema.sql`。
 
 当前 **schema 版本**：`1`（见 `lib/db.py` 中 `SCHEMA_VERSION`）。

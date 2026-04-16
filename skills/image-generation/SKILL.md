@@ -38,11 +38,11 @@ description: >-
 - **不**作为可独立执行的出图技能：端点、模型 ID、脚本路径与参数以各 **`image-generation-*` 服务商子技能**为准，本文件不重复罗列以免与子技能脱节。
 - **不**代替用户保管或填写密钥、**不**承诺计费与配额；密钥与费用以各平台控制台为准。
 - **不**把某一项目的私有目录、内部规范文件名写死为唯一路径；你应在**自己的项目**里维护风格说明与占位约定。
-- 提示词撰写原则见 `nano-banana-pro-prompting`；**单次 API 请求的提示词须自包含**，勿假设模型能「记住上一张图」（见该技能与 [AGENTS.md](../../AGENTS.md)）。
+- 提示词撰写原则见 `nano-banana-pro-prompting`；**单次 API 请求的提示词须自包含**，勿假设模型能「记住上一张图」（见该技能与 [AGENTS.md](https://github.com/baklib-tools/skills/blob/main/AGENTS.md)）。
 
 ## 与提示词技能的关系
 
-- **撰写/优化** Nano Banana（Gemini 3 Pro Image）类提示词：使用 **[nano-banana-pro-prompting](../nano-banana-pro-prompting/SKILL.md)**。
+- **撰写/优化** Nano Banana（Gemini 3 Pro Image）类提示词：使用 **[nano-banana-pro-prompting](https://github.com/baklib-tools/skills/blob/main/skills/nano-banana-pro-prompting/SKILL.md)**。
 - **调用哪个 HTTP 接口**：按后端阅读 **`image-generation-ucloud`** 或 **`image-generation-openrouter`**；二者与提示词技能正交，可任意组合。
 
 ## 执行前检查 API 密钥（代理必读）
@@ -73,8 +73,8 @@ description: >-
 
 | 服务商 | 脚本路径 | 依赖 |
 |--------|----------|------|
-| UCloud ModelVerse | [`image-generation-ucloud/scripts/generate_ucloud_image.py`](../image-generation-ucloud/scripts/generate_ucloud_image.py) | `requests` |
-| OpenRouter | [`image-generation-openrouter/scripts/generate_openrouter_image.py`](../image-generation-openrouter/scripts/generate_openrouter_image.py) | `requests` |
+| UCloud ModelVerse | [`generate_ucloud_image.py`](https://github.com/baklib-tools/skills/blob/main/skills/image-generation-ucloud/scripts/generate_ucloud_image.py) | `requests` |
+| OpenRouter | [`generate_openrouter_image.py`](https://github.com/baklib-tools/skills/blob/main/skills/image-generation-openrouter/scripts/generate_openrouter_image.py) | `requests` |
 
 将对应技能目录安装到你项目中的**技能路径**（以所用工具文档为准）后，在项目根执行；脚本通过向上查找含 **`.config`** 的目录定位密钥文件，详见各脚本 `--help`。本仓库**不提供**本地离线出图示例脚本（能力因环境差异大，由用户自行选用工具链）。
 

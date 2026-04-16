@@ -9,7 +9,7 @@ description: 将工作区内的零散信息识别、整理后录入 Baklib；优
 
 ## 与全局规则的关系
 
-- **MCP 与鉴权**：先阅读并遵循同仓库技能 [baklib-mcp](../baklib-mcp/SKILL.md)（Token、`list/get` 再写入、禁止臆测清单数据等）。
+- **MCP 与鉴权**：先阅读并遵循技能 [baklib-mcp](https://github.com/baklib-tools/skills/blob/main/skills/baklib-mcp/SKILL.md)（Token、`list/get` 再写入、禁止臆测清单数据等）。
 - **写入确认**：执行 **任意** MCP 创建/更新/删除前，必须用自然语言列出：**将调用的工具名、关键参数（如 `space_id` / `site_id` / 标题 / 是否发布）**，并得到用户**明确同意**后再调用。若用户仅说「录入」但未确认方案，先展示方案再执行。
 - **本地文件写入**：若用户要求写入仓库内 Markdown 等路径，同样先说明路径与内容摘要，确认后再写入。
 
@@ -64,7 +64,7 @@ description: 将工作区内的零散信息识别、整理后录入 Baklib；优
   - **多条规则可能命中** → 列出候选（类型 + 名称/ID + 匹配理由），给出**推荐项**，**等待用户选定**后再执行。  
   - **无匹配或记忆文件不存在** → **询问**用户：希望进入 KB 文章 / DAM / 站点页面 / 仅本地路径；缺 `space_id`/`site_id` 时先用 MCP **列出可选实体**再请用户选。
 4. **执行与校验**
-  用户确认后：按 [baklib-mcp](../baklib-mcp/SKILL.md) 要求 **get → create/update →（必要时）get** 校验；失败时回报错误原文与建议下一步（鉴权、参数、重名等）。
+  用户确认后：按 [baklib-mcp](https://github.com/baklib-tools/skills/blob/main/skills/baklib-mcp/SKILL.md) 要求 **get → create/update →（必要时）get** 校验；失败时回报错误原文与建议下一步（鉴权、参数、重名等）。
 5. **更新记忆（可选）**
   当用户说「以后 XXX 都放到 Y」时，将对应规则**追加或合并**进记忆文件（保持 YAML 有效）；不要写入任何 Token 或密钥。
 
@@ -80,4 +80,4 @@ description: 将工作区内的零散信息识别、整理后录入 Baklib；优
 - 同步辅助 CLI（状态检查、清单对比、导出词表等）：[scripts/README.md](scripts/README.md)  
 - 知识库 / 资源库 / 站点选型与位置说明：[routing-guide.md](routing-guide.md)  
 - 记忆文件字段说明与示例：[reference.md](reference.md)  
-- MCP 与 Token：[baklib-mcp](../baklib-mcp/SKILL.md)
+- MCP 与 Token：[baklib-mcp](https://github.com/baklib-tools/skills/blob/main/skills/baklib-mcp/SKILL.md)
