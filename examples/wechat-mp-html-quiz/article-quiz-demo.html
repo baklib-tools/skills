@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>技能小测验：微信公众号 HTML 排版要点 | Examples</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f7f7f7; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .rich_media_wrp { max-width: 677px; margin: 0 auto; background: #fff; min-height: 100vh; }
+    .rich_media_title { font-size: 22px; font-weight: 700; color: #000; line-height: 1.4; margin: 20px 0 12px; padding: 0 16px; word-wrap: break-word; }
+    .rich_media_meta_list { padding: 0 16px 16px; color: #8c8c8c; font-size: 14px; line-height: 1.6; }
+    #js_content { padding: 0 16px 32px; font-size: 17px; line-height: 1.75; color: #333; text-size-adjust: 100%; }
+    #js_content h2 { font-size: 19px; font-weight: bold; color: #000; margin: 32px 0 16px; line-height: 1.4; border-left: 4px solid #0d9488; padding-left: 10px; }
+    #js_content img { max-width: 100% !important; height: auto !important; display: block; margin: 20px 0; border-radius: 4px; vertical-align: middle; }
+  </style>
+</head>
+
+<body>
+  <div id="img-content" class="rich_media_wrp">
+    <h1 class="rich_media_title">技能小测验：微信公众号 HTML 排版要点</h1>
+    <div id="meta_content" class="rich_media_meta_list">
+      <span class="meta_author">baklib-tools/skills · examples</span>
+      <span class="meta_date">演示文稿</span>
+    </div>
+    <section id="js_content" class="rich_media_content js_underline_content">
+
+      <section style="margin:0 0 24px;color:#555;background:#f8fafc;padding:16px;border-left:4px solid #0d9488;">
+        <section style="line-height:1.75;margin:0;"><strong style="color:#0d9488;">导读</strong>：本页对应技能 <strong style="color:#333">wechat-mp-html</strong>。读完三道题，你能复述：粘贴到公众号的正文根节点、样式写在哪里、复制按钮的标准实现。</section>
+      </section>
+
+      <section style="margin:24px 0;text-align:center">
+        <img src="https://picsum.photos/seed/wechatquizheader/800/420" alt="篇首配图（演示用占位图）" style="max-width:100%;height:auto;display:block;margin:0 auto;border-radius:8px;">
+      </section>
+
+      <section style="margin: 40px 0 10px 0;">
+        <section style="margin: 10px 0;display: flex;justify-content: flex-start;">
+          <section style="display: flex;align-items: center;">
+            <section style="flex-shrink: 0;z-index: 4;">
+              <section style="font-size: 24px;letter-spacing: 1.5px;color: #ffffff;background-color: #0d9488;padding: 1px 6px;box-sizing:border-box;">
+                <section style="line-height:1.75;margin:0;"><strong>01</strong></section>
+              </section>
+            </section>
+            <section style="display: flex;margin-left: -10px;">
+              <section style="background: linear-gradient(to right,#20c1ad,#0d9488);padding: 3px 15px 3px 25px;box-sizing:border-box;transform: skew(-15deg);-webkit-transform: skew(-15deg);">
+                <section style="transform: skew(15deg);-webkit-transform: skew(15deg);">
+                  <section style="font-size: 16px;color: #ffffff;text-align: left;">
+                    <section style="line-height:1.75;font-size: 16px;margin:0;"><strong>判断题</strong></section>
+                  </section>
+                </section>
+              </section>
+              <section style="flex-shrink: 0;padding-left: 3px;display: flex;align-items: flex-end;box-sizing:border-box;">
+                <section style="width: 10px;height: 15px;background-color: #20c3ac;box-sizing:border-box;transform: skew(-15deg);-webkit-transform: skew(-15deg);"></section>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section style="margin:0 0 20px;line-height:1.75;color:#333;text-align:justify">复制到公众号图文正文时，应复制 <strong style="color:#0d9488">#js_content</strong> 这一段的 outerHTML，而不是整页 HTML。对吗？（答案：<strong>对</strong>。标题与作者应在后台单独填写。）</section>
+
+      <section style="margin: 40px 0 10px 0;">
+        <section style="margin: 10px 0;display: flex;justify-content: flex-start;">
+          <section style="display: flex;align-items: center;">
+            <section style="flex-shrink: 0;z-index: 4;">
+              <section style="font-size: 24px;letter-spacing: 1.5px;color: #ffffff;background-color: #0d9488;padding: 1px 6px;box-sizing:border-box;">
+                <section style="line-height:1.75;margin:0;"><strong>02</strong></section>
+              </section>
+            </section>
+            <section style="display: flex;margin-left: -10px;">
+              <section style="background: linear-gradient(to right,#20c1ad,#0d9488);padding: 3px 15px 3px 25px;box-sizing:border-box;transform: skew(-15deg);-webkit-transform: skew(-15deg);">
+                <section style="transform: skew(15deg);-webkit-transform: skew(15deg);">
+                  <section style="font-size: 16px;color: #ffffff;text-align: left;">
+                    <section style="line-height:1.75;font-size: 16px;margin:0;"><strong>选择题</strong></section>
+                  </section>
+                </section>
+              </section>
+              <section style="flex-shrink: 0;padding-left: 3px;display: flex;align-items: flex-end;box-sizing:border-box;">
+                <section style="width: 10px;height: 15px;background-color: #20c3ac;box-sizing:border-box;transform: skew(-15deg);-webkit-transform: skew(-15deg);"></section>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section style="margin:0 0 16px;line-height:1.75;color:#333;text-align:justify">正文样式应主要写在哪里？</section>
+      <section style="margin:0 0 8px;padding-left:22px;line-height:1.75;color:#333;">A. 仅写在页面 <strong>&lt;head&gt;</strong> 里的 <strong>&lt;style&gt;</strong>，粘贴时一起过去</section>
+      <section style="margin:0 0 8px;padding-left:22px;line-height:1.75;color:#333;">B. 写在每个元素的 <strong>inline style</strong>，不依赖正文里的 class</section>
+      <section style="margin:0 0 20px;padding-left:22px;line-height:1.75;color:#333;">C. 写在微信公众号后台「自定义 CSS」</section>
+      <section style="margin:0 0 24px;line-height:1.75;color:#0d9488;text-align:justify"><strong>答案：B</strong>。公众号粘贴不会带上本页 <strong>&lt;head&gt;</strong> 样式，故组件须自带 <strong>style=&quot;…&quot;</strong>。</section>
+
+      <section style="margin: 50px auto;display: flex;justify-content: center;">
+        <section>
+          <section style="font-size: 24px;color: #0d9488;text-align: center;padding: 0px 25px;box-sizing: border-box;">
+            <section style="line-height:1.4;margin:0;"><strong>动手：复制按钮</strong></section>
+          </section>
+          <section style="width: 100%;height: 14px;background-color: #f3fbe9;border-bottom: 1px solid #ffe076;margin-top: -14px;max-width:100% !important;box-sizing:border-box;"></section>
+        </section>
+      </section>
+      <section style="margin:0 0 20px;line-height:1.75;color:#333;text-align:justify">标准实现使用按钮 id <strong>#copy-to-weixin</strong>、提示 <strong>#copy-toast</strong>，以及 <strong>ClipboardItem</strong> 同时写入 <strong>text/html</strong> 与 <strong>text/plain</strong>。本页右下角即为该按钮，可在本地点按试复制。</section>
+
+      <section style="margin:24px 0;text-align:center">
+        <img src="https://picsum.photos/seed/wechatquizfooter/800/360" alt="篇中配图（演示）" style="max-width:100%;height:auto;display:block;margin:0 auto;border-radius:8px;">
+      </section>
+
+      <section style="margin: 40px 0 10px 0;">
+        <section style="margin: 10px 0;display: flex;justify-content: flex-start;">
+          <section style="display: flex;align-items: center;">
+            <section style="flex-shrink: 0;z-index: 4;">
+              <section style="font-size: 24px;letter-spacing: 1.5px;color: #ffffff;background-color: #0d9488;padding: 1px 6px;box-sizing:border-box;">
+                <section style="line-height:1.75;margin:0;"><strong>03</strong></section>
+              </section>
+            </section>
+            <section style="display: flex;margin-left: -10px;">
+              <section style="background: linear-gradient(to right,#20c1ad,#0d9488);padding: 3px 15px 3px 25px;box-sizing:border-box;transform: skew(-15deg);-webkit-transform: skew(-15deg);">
+                <section style="transform: skew(15deg);-webkit-transform: skew(15deg);">
+                  <section style="font-size: 16px;color: #ffffff;text-align: left;">
+                    <section style="line-height:1.75;font-size: 16px;margin:0;"><strong>简答</strong></section>
+                  </section>
+                </section>
+              </section>
+              <section style="flex-shrink: 0;padding-left: 3px;display: flex;align-items: flex-end;box-sizing:border-box;">
+                <section style="width: 10px;height: 15px;background-color: #20c3ac;box-sizing:border-box;transform: skew(-15deg);-webkit-transform: skew(-15deg);"></section>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section style="margin:0 0 20px;line-height:1.75;color:#333;text-align:justify">发布前，文内图片的 <strong>src</strong> 应如何处理？</section>
+      <section style="background:#f8fafc;border-left:4px solid #ea580c;padding:14px 16px;margin:20px 0;">
+        <section style="margin:0 0 12px;font-size:17px;line-height:1.75;color:#333"><strong>参考答案</strong></section>
+        <section style="margin:0;font-size:17px;line-height:1.75;color:#333">相对路径仅便于本地预览；正式发布须改为已在公众号素材库上传后的 <strong>https</strong> 图片地址，或在后台插入图片生成链接。本示例使用公开占位图仅作演示。</section>
+      </section>
+
+    </section>
+  </div>
+
+  <button type="button" id="copy-to-weixin"
+    style="position: fixed; right: 16px; bottom: 24px; padding: 10px 16px; font-size: 14px; color: #fff; background: #0d9488; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 9999;">复制正文到公众号</button>
+  <span id="copy-toast"
+    style="display: none; position: fixed; right: 16px; bottom: 60px; padding: 8px 12px; font-size: 13px; color: #333; background: #f0fdf4; border: 1px solid #86efac; border-radius: 6px; z-index: 10000;">已复制，可粘贴到公众号编辑器</span>
+  <script>
+    (function () {
+      var btn = document.getElementById('copy-to-weixin');
+      var toast = document.getElementById('copy-toast');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var el = document.getElementById('js_content');
+        if (!el) { toast.textContent = '未找到正文区域'; toast.style.display = 'block'; setTimeout(function () { toast.style.display = 'none'; }, 2000); return; }
+        var html = el.tagName === 'SECTION' ? el.outerHTML : el.innerHTML;
+        function showDone() { toast.textContent = '已复制，可粘贴到公众号编辑器'; toast.style.display = 'block'; setTimeout(function () { toast.style.display = 'none'; }, 2000); }
+        function showErr(msg) { toast.textContent = msg || '复制失败，请手动选中正文区域复制'; toast.style.display = 'block'; setTimeout(function () { toast.style.display = 'none'; }, 3000); }
+        if (navigator.clipboard && navigator.clipboard.write) {
+          var blobHtml = new Blob([html], { type: 'text/html;charset=utf-8' });
+          var blobText = new Blob([html], { type: 'text/plain;charset=utf-8' });
+          navigator.clipboard.write([new ClipboardItem({ 'text/html': blobHtml, 'text/plain': blobText })]).then(showDone).catch(function () { fallbackCopy(); });
+        } else {
+          fallbackCopy();
+        }
+        function fallbackCopy() {
+          var ta = document.createElement('textarea');
+          ta.value = html;
+          ta.style.position = 'fixed'; ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); showDone(); } catch (e) { showErr(); }
+          document.body.removeChild(ta);
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

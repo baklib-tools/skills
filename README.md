@@ -42,6 +42,8 @@ npx skills add baklib-tools/skills --skill baklib-data-import
 
 具体行为与参数以 `skills` 包 CLI 为准（可执行 `npx skills --help` 查看）。
 
+技能用法与效果示例见目录 **[examples/](examples/README.md)**（含截图与可运行 HTML）。
+
 ### 2. 手动拷贝
 
 从本仓库根目录的 `skills/<skill-name>/` 复制到**你自己项目**中的技能安装目录（**具体路径以所用 Agent 或编辑器的技能安装说明为准**），保持每个技能为独立子目录且内含 `SKILL.md`。
@@ -72,11 +74,13 @@ git submodule update --init --recursive
 | [git-commit](skills/git-commit/SKILL.md)                                   | `npx skills add baklib-tools/skills --skill git-commit`                  | 分析 git 变更、建议拆分提交并生成规范提交信息（Conventional Commits）                                                                                                                                                                                             |
 | [baklib-mcp](skills/baklib-mcp/SKILL.md)                                   | `npx skills add baklib-tools/skills --skill baklib-mcp`                  | Baklib MCP：鉴权、优先 MCP 操作 KB/站点/DAM；站点页 `signed_id` 经 MCP 按 purpose（表单 `dynamic_form`）获取                                                                                                                                 |
 | [baklib-intake-assistant](skills/baklib-intake-assistant/SKILL.md)         | `npx skills add baklib-tools/skills --skill baklib-intake-assistant`     | 结合 Baklib MCP 做录入；约定镜像根下 `知识库/`、`资源库/`、`站点/` 存 Markdown，**SQLite** 台账；含 [scripts](skills/baklib-intake-assistant/scripts/README.md)（`status`/`health_check`/`plan_sync` 等），见 [local-mirror](skills/baklib-intake-assistant/local-mirror.md) |
-| [baklib-bke-markdown](skills/baklib-bke-markdown/SKILL.md)                 | `npx skills add baklib-tools/skills --skill baklib-bke-markdown`        | Baklib **BKE Markdown** 撰写与导入（L1/L2、`dam-id`、文件卡片冒号语法、链接卡片、片段/分栏/嵌入等）；可配合 MCP 解析 DAM 编号                                                                                                                                 |
+| [baklib-bke-markdown](skills/baklib-bke-markdown/SKILL.md)                 | `npx skills add baklib-tools/skills --skill baklib-bke-markdown`        | Baklib **BKE Markdown** 撰写与导入（L1/L2、`dam-id`、文件卡片冒号语法、链接卡片、片段/分栏/嵌入等；详规见同目录 **`references/`**）；可配合 MCP 解析 DAM 编号                                                                                                                                 |
 | [nano-banana-pro-prompting](skills/nano-banana-pro-prompting/SKILL.md)     | `npx skills add baklib-tools/skills --skill nano-banana-pro-prompting`   | Gemini 3 Pro Image（Nano Banana Pro）**提示词撰写**与复查（不含脚本/API）                                                                                                                                                                                   |
 | [image-generation](skills/image-generation/SKILL.md)                       | `npx skills add baklib-tools/skills --skill image-generation`            | 图像生成**工作流总览**；须配合 `image-generation-ucloud` / `image-generation-openrouter` 等**服务商子技能**才能实际出图                                                                                                                                               |
 | [image-generation-ucloud](skills/image-generation-ucloud/SKILL.md)         | `npx skills add baklib-tools/skills --skill image-generation-ucloud`     | **UCloud ModelVerse** 图像 API（鉴权、端点、模型要点）                                                                                                                                                                                                    |
 | [image-generation-openrouter](skills/image-generation-openrouter/SKILL.md) | `npx skills add baklib-tools/skills --skill image-generation-openrouter` | **OpenRouter** 出图（chat/completions、modalities 等）                                                                                                                                                                                            |
+| [requirements-to-published-content](skills/requirements-to-published-content/SKILL.md) | `npx skills add baklib-tools/skills --skill requirements-to-published-content` | **工作流**：需求采集→分析→方案→对外文稿→（可选）配图 / 公众号 HTML / Baklib 站点发布；可扩展更多渠道                                                                                                                                 |
+| [wechat-mp-html](skills/wechat-mp-html/SKILL.md)                           | `npx skills add baklib-tools/skills --skill wechat-mp-html`              | **微信公众号图文** HTML：`#js_content`、inline 样式、标准「复制正文到公众号」脚本；详规见 **`references/`**                                                                                                                                   |
 
 
 ## 贡献

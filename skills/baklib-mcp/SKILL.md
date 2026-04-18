@@ -29,7 +29,7 @@ description: 说明如何配置并使用 Baklib MCP：涵盖鉴权与 MCP 客户
 
 ### 格式约定
 
-通过 MCP 向 Baklib **写入**或**回填**下列内容时，**正文一律采用 BKE Markdown**：即在 **标准 Markdown / GFM** 之上，使用 Baklib BKE 编辑器约定的**扩展写法**（圆括号第三段属性、`dam-id`、文件卡片冒号语法、L2 HTML 注释块如 `link-card` / `fragment` / 嵌入等）。**完整语法、示例与避坑清单**见技能 **[baklib-bke-markdown](https://github.com/baklib-tools/skills/blob/main/skills/baklib-bke-markdown/SKILL.md)**；撰写或改写正文时应**打开并对照该技能**，不要仅凭「通用 Markdown」臆测扩展格式。各 MCP 工具的字段名仍以工具 schema 为准。
+通过 MCP 向 Baklib **写入**或**回填**下列内容时，**正文一律采用 BKE Markdown**：即在 **标准 Markdown / GFM** 之上，使用 Baklib BKE 编辑器约定的**扩展写法**（圆括号第三段属性、`dam-id`、文件卡片冒号语法、L2 HTML 注释块如 `link-card` / `fragment` / 嵌入等）。**完整语法、示例与避坑清单**见技能 **[baklib-bke-markdown](https://github.com/baklib-tools/skills/blob/main/skills/baklib-bke-markdown/SKILL.md)**（主文件与 **`references/`** 目录内分篇说明）；撰写或改写正文时应**打开并对照该技能**，不要仅凭「通用 Markdown」臆测扩展格式。各 MCP 工具的字段名仍以工具 schema 为准。
 
 | 场景 | 说明 |
 |------|------|

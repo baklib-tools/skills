@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{文章标题}}</title>
+  <style>
+    /* 仅用于本地预览；复制到公众号的正文不包含此处样式 */
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f7f7f7; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .rich_media_wrp { max-width: 677px; margin: 0 auto; background: #fff; min-height: 100vh; }
+    .rich_media_title { font-size: 22px; font-weight: 700; color: #000; line-height: 1.4; margin: 20px 0 12px; padding: 0 16px; word-wrap: break-word; }
+    .rich_media_meta_list { padding: 0 16px 16px; color: #8c8c8c; font-size: 14px; line-height: 1.6; }
+    .rich_media_meta_list .meta_date { margin-right: 8px; }
+    #js_content { padding: 0 16px 24px; font-size: 17px; line-height: 1.75; color: #333; text-size-adjust: 100%; }
+    #js_content h2 { font-size: 19px; font-weight: bold; color: #000; margin: 32px 0 16px; line-height: 1.4; border-left: 4px solid #0d9488; padding-left: 10px; }
+    #js_content h3 { font-size: 17px; font-weight: bold; color: #000; margin: 24px 0 12px; }
+    #js_content img { max-width: 100% !important; height: auto !important; display: block; margin: 20px 0; border-radius: 4px; vertical-align: middle; }
+  </style>
+</head>
+
+<body>
+  <!--
+    使用说明：
+    1. 替换 {{文章标题}}、{{作者}}、{{发布时间}}。
+    2. 正文只改 #js_content 内部；发布时复制该 section 的 outerHTML 到公众号编辑器。
+    3. 图片：发布前改为 https 绝对 URL。
+    4. 技术约束见同目录 constraints.md。
+  -->
+  <div id="img-content" class="rich_media_wrp">
+    <h1 class="rich_media_title" id="activity-name">{{文章标题}}</h1>
+    <div id="meta_content" class="rich_media_meta_list">
+      <span class="meta_author">{{作者}}</span>
+      <span class="meta_date">{{发布时间}}</span>
+    </div>
+    <section id="js_content" class="rich_media_content js_underline_content">
+      <!-- 可选：篇首图，src 发布前替换 -->
+      <!-- <section style="margin:0 0 20px;text-align:center"><img src="https://example.com/header.png" alt="" style="max-width:100%;height:auto;display:block;margin:0 auto;"></section> -->
+
+      <section style="margin:0 0 24px;color:#555;background:#f8fafc;padding:16px;border-left:4px solid #0d9488;">
+        <section style="line-height:1.75;margin:0;"><strong style="color:#0d9488;">导读</strong>：此处为导语。</section>
+      </section>
+
+      <section style="margin:0 0 16px;line-height:1.75;color:#333;text-align:justify">
+        第一段正文，<strong style="color:#0d9488">关键词</strong>。
+      </section>
+
+      <section style="margin:24px 0;text-align:center">
+        <img src="https://example.com/preview.png" alt="配图说明" style="max-width:100%;height:auto;display:block;margin:0 auto;border-radius:8px;">
+      </section>
+
+      <section style="background:#f8fafc;border-left:4px solid #ea580c;padding:14px 16px;margin:20px 0;">
+        <section style="margin:0 0 12px;font-size:17px;line-height:1.75;color:#333"><strong>总结</strong></section>
+        <section style="margin:0;font-size:17px;line-height:1.75;color:#333">一句话收束全文。</section>
+      </section>
+
+      <!-- 可选：篇尾图 -->
+      <!-- <section style="margin:20px 0 0;text-align:center"><img src="https://example.com/footer.png" alt="" style="max-width:100%;height:auto;display:block;margin:0 auto;"></section> -->
+    </section>
+  </div>
+
+  <button type="button" id="copy-to-weixin"
+    style="position: fixed; right: 16px; bottom: 24px; padding: 10px 16px; font-size: 14px; color: #fff; background: #0d9488; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 9999;">复制正文到公众号</button>
+  <span id="copy-toast"
+    style="display: none; position: fixed; right: 16px; bottom: 60px; padding: 8px 12px; font-size: 13px; color: #333; background: #f0fdf4; border: 1px solid #86efac; border-radius: 6px; z-index: 10000;">已复制，可粘贴到公众号编辑器</span>
+  <script>
+    (function () {
+      var btn = document.getElementById('copy-to-weixin');
+      var toast = document.getElementById('copy-toast');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var el = document.getElementById('js_content');
+        if (!el) { toast.textContent = '未找到正文区域'; toast.style.display = 'block'; setTimeout(function () { toast.style.display = 'none'; }, 2000); return; }
+        var html = el.tagName === 'SECTION' ? el.outerHTML : el.innerHTML;
+        function showDone() { toast.textContent = '已复制，可粘贴到公众号编辑器'; toast.style.display = 'block'; setTimeout(function () { toast.style.display = 'none'; }, 2000); }
+        function showErr(msg) { toast.textContent = msg || '复制失败，请手动选中正文区域复制'; toast.style.display = 'block'; setTimeout(function () { toast.style.display = 'none'; }, 3000); }
+        if (navigator.clipboard && navigator.clipboard.write) {
+          var blobHtml = new Blob([html], { type: 'text/html;charset=utf-8' });
+          var blobText = new Blob([html], { type: 'text/plain;charset=utf-8' });
+          navigator.clipboard.write([new ClipboardItem({ 'text/html': blobHtml, 'text/plain': blobText })]).then(showDone).catch(function () { fallbackCopy(); });
+        } else {
+          fallbackCopy();
+        }
+        function fallbackCopy() {
+          var ta = document.createElement('textarea');
+          ta.value = html;
+          ta.style.position = 'fixed'; ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); showDone(); } catch (e) { showErr(); }
+          document.body.removeChild(ta);
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
