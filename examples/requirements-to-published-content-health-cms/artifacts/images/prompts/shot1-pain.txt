@@ -1,0 +1,9 @@
+Step 1: Background — cool gray and blue gradient, slightly tense atmosphere, office setting.
+Step 2: Main visual — isometric or flat illustration of healthcare content chaos: multiple floating screens and folder icons, scattered document pages, disconnected arrows, no readable brand logos or real product UIs.
+Step 3: Supporting — subtle stress shadows, fragmented layout.
+Step 4: Icons — simple generic file and cloud icons only.
+Step 5: Mood — overwhelmed operations team metaphor, no identifiable people faces.
+Step 6: Symbols — question marks and small warning accents, not text-heavy.
+Step 7: Text in image — no Chinese or English sentences; at most abstract symbols, no HEX codes.
+Step 8: Style — clean corporate infographic, soft 3D, 4:3 framing, professional medical-industry tone without gore.
+Step 9: Before finalizing, verify no logos, no legible long text, no watermarks.

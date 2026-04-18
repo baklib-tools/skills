@@ -50,3 +50,7 @@ npx skills add baklib-tools/skills --skill baklib-mcp --skill baklib-bke-markdow
 ```
 
 具体参数以 `npx skills --help` 为准。
+
+## 示例（仓库内）
+
+端到端演示见 **[examples/requirements-to-published-content-health-cms/README.md](https://github.com/baklib-tools/skills/blob/main/examples/requirements-to-published-content-health-cms/README.md)**：在 Cursor 中挂载本地 **Baklib 产品知识库**（目录名示例 **`baklib-workspace`**，绝对路径由使用者本机自定）、结合脱敏客户需求，产出分析、正式方案、推广叙事、对外长文、公众号稿与配图推导说明；**模拟对话**见 [walkthrough/simulated-dialogue.md](https://github.com/baklib-tools/skills/blob/main/examples/requirements-to-published-content-health-cms/walkthrough/simulated-dialogue.md)。

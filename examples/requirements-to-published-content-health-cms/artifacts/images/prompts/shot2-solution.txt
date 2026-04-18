@@ -1,0 +1,9 @@
+Step 1: Background — bright teal and white gradient (#0d9488 family), calm organized mood.
+Step 2: Main visual — single unified content hub: one central node or vault with streams of documents and media flowing in and organizing into neat stacks; isometric minimal illustration.
+Step 3: Supporting — subtle grid, gentle glow on the hub, sense of order.
+Step 4: Icons — simple document, image, and link icons converging to center.
+Step 5: No human characters required; optional silhouettes without detail.
+Step 6: State symbols — checkmarks or soft connectors suggesting traceability.
+Step 7: Text in image — no sentences; optional single abstract label shapes without readable words.
+Step 8: Style — modern SaaS infographic, flat + soft depth, 4:3, medical enterprise friendly, no real software screenshots.
+Step 9: Verify no brand logos, no long readable text, balanced whitespace.

@@ -1,0 +1,9 @@
+Step 1: Background — warm light gradient from soft amber to white, optimistic.
+Step 2: Main visual — three ascending steps or roadmap blocks left to right suggesting phased rollout: unify, govern, integrate — use abstract shapes and arrows only, no text on steps.
+Step 3: Supporting — small team collaboration silhouette at the end of the path, bright lighting.
+Step 4: Icons — simple ascending staircase or timeline motif.
+Step 5: Optional sunburst or upward trend curve.
+Step 6: Keep composition open with generous margins.
+Step 7: Text in image — absolutely no Chinese or English words in the picture; shapes and icons only.
+Step 8: Style — editorial illustration, 4:3, friendly professional, healthcare tech marketing, no logos.
+Step 9: Verify no text rendered, no watermarks, no HEX strings visible.
