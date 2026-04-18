@@ -1,6 +1,6 @@
 # 示例：requirements-to-published-content（医疗健康 CMS 需求 → 对外内容与公众号）
 
-本目录演示技能 **[requirements-to-published-content](../../skills/requirements-to-published-content/SKILL.md)** 的端到端用法：把**脱敏后的客户需求**与**本地 Baklib 产品知识**结合，依次产出需求分析、正式方案、推广向案例叙事、对外长文、公众号稿，并由模型**自行推导**配图思路（见 `artifacts/image-plan-from-content.md`）。
+本目录演示技能 **[requirements-to-published-content](../../skills/requirements-to-published-content/SKILL.md)** 的端到端用法：把**脱敏后的客户需求**与**本地 Baklib 产品知识**结合，依次产出需求分析、正式方案、推广向案例叙事、对外长文、公众号稿，并由模型**自行推导**配图思路（见 `artifacts/image-plan-from-content.md`）。**真实使用时**，代理须先按技能正文做**执行前确认**（步骤清单 + 是否软文/公众号/出图/MCP），**用户确认后再执行**；本仓库示例文件为成稿参考，**不**要求每次都在此路径生成相同目录结构。
 
 ## 前提条件
 
