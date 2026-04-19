@@ -60,6 +60,10 @@
 - 大段重复内容优先拆到同目录下的 **`references/`**、**`reference.md`** 等文件（由主 `SKILL.md` 以链接引用），避免单文件过长。
 - 更新技能时同步更新根目录 [README.md](README.md) 中的技能表（若有新增或重命名）。
 
+## 精选外链索引
+
+与全仓库相关的**手写精选**外链（PDF 工具、本地 LLM 客户端等与 Baklib / 技能工作流相关的索引）见 [docs/curated-links.md](docs/curated-links.md)。仅与某一技能强相关的深度参考仍放在该技能的 **`references/`**；此处不替代全网 Awesome 列表或 [external-skills/](external-skills/) 子模块。
+
 ## 与本仓库其他文件的优先级
 
 - 具体技能的细则以各 `SKILL.md` 为准；**本文件**约束存放位置、配置读取约定、公开性与责任边界。若某技能需例外说明，应在技能内显式写出适用范围。
