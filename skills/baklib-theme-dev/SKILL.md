@@ -1,6 +1,7 @@
 ---
 name: baklib-theme-dev
-description: Baklib 站点主题（模板）开发：Liquid 目录结构、命名、全局与场景变量、对象属性与方法、自定义指令与过滤器、静态页 URL、种子与迁移、资源与行为限制。在用户编写或修改 .liquid 模板、snippets、layouts、statics、settings_schema、或排查模板语法与变量时使用；本技能自包含规范说明，不依赖外站文档。
+description: >-
+  Baklib 站点主题（模板）开发：Liquid 目录与命名、对象与指令/过滤器、静态页 URL、seeds 与迁移；并含「新建主题脚手架」（themes/ 目录与最小文件）与「参考站复刻工作流」（须确认门、质检清单）。在用户编写或修改 .liquid、新建模板、复刻参考站、或排查模板语法与变量时使用；详规见 references/。
 ---
 
 # Baklib 模板开发
@@ -14,6 +15,13 @@ Baklib 站点前台使用 **[Liquid](https://shopify.github.io/liquid/)** 模板
 | 对象 | 在 `{{ }}` 中输出的变量或属性，如 `{{ site.name }}` |
 | 指令 | 在 `{% %}` 中控制流程；本文称「指令」以免与站点内容「标签」混淆 |
 | 过滤器 | 在 `{{ }}` 内用 `\|` 连接，如 `{{ site.pages \| order_by: "-published_at" }}` |
+
+## 工作流（按需阅读）
+
+| 场景 | 文档 |
+|------|------|
+| 在产品仓库中**新建** `themes/[scope]/[name]/` 并生成最小文件 | [create-theme-scaffold.md](references/create-theme-scaffold.md) |
+| **复刻参考网站**（分析、适配、分期落地、质检；多步须先确认） | [website-cloning-workflow.md](references/website-cloning-workflow.md) |
 
 ## 文档索引（`references/`）
 
@@ -43,14 +51,3 @@ Baklib 站点前台使用 **[Liquid](https://shopify.github.io/liquid/)** 模板
   <a href="{{ p.path }}">{{ p.link_text }}</a>
 {% endfor %}
 ```
-
-## 相关工作流技能（可选安装）
-
-与模板落地相关的流程可单独安装（单技能安装时请使用下列 **GitHub 稳定链接** 打开对应 `SKILL.md`）：
-
-| 技能 | 说明 |
-|------|------|
-| [baklib-website-cloning](https://github.com/baklib-tools/skills/blob/main/skills/baklib-website-cloning/SKILL.md) | 参考站分析、复刻流程与质量清单 |
-| [baklib-create-theme](https://github.com/baklib-tools/skills/blob/main/skills/baklib-create-theme/SKILL.md) | 新建 `themes/[scope]/[name]/` 脚手架与基础文件约定 |
-
-安装示例：`npx skills add baklib-tools/skills --skill baklib-website-cloning`、`npx skills add baklib-tools/skills --skill baklib-create-theme`。

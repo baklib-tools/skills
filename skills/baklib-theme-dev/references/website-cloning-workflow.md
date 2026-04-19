@@ -1,14 +1,6 @@
----
+# 参考站复刻工作流
 
-## name: baklib-website-cloning
-description: >-
-  基于参考网站做 Baklib 站点模板复刻：分析页面结构与设计系统、提取色彩/字体/布局/组件、收集客户需求并制定适配方案、按优先级落地 Liquid 模板与静态页。在用户提到复刻参考站、参考某 URL 做模板、网站克隆或设计还原时使用。多步工作流：代理须先列出拟执行步骤并就分析深度、是否产出完整模板等征求确认后再深入。
-
-# Baklib 网站复刻流程
-
-基于参考网站，分析设计风格、提取设计元素、适配客户需求，使用 **Baklib 模板系统**（Liquid）实现站点复刻。
-
-**语法与对象规范**见主技能 [baklib-theme-dev](https://github.com/baklib-tools/skills/blob/main/skills/baklib-theme-dev/SKILL.md)（按需安装：`npx skills add baklib-tools/skills --skill baklib-theme-dev`）。
+基于参考网站，分析设计风格、提取设计元素、适配客户需求，使用 **Baklib 模板系统**（Liquid）实现站点复刻。语法与对象以本技能包主 `SKILL.md` 及 `references/` 下各文件为准。
 
 ## 确认门（工作流）
 
@@ -134,7 +126,7 @@ themes/[scope]/[theme_name]/
 - **访问路径**：`/s/[文件名]`
 - **示例**：`statics/about-us.liquid` → `/s/about-us`
 
-（路径与约定以 [baklib-theme-dev](https://github.com/baklib-tools/skills/blob/main/skills/baklib-theme-dev/SKILL.md) 中 `references/` 为准。）
+路径与 URL 约定见 [directory-and-naming.md](directory-and-naming.md)。
 
 ### 步骤 7：占位图片
 
@@ -177,21 +169,20 @@ themes/[scope]/[theme_name]/
 
 ### 设计还原度
 
-- 色彩系统一致
-- 字体系统一致
-- 布局结构一致
-- 组件样式一致
+- [ ] 色彩系统一致
+- [ ] 字体系统一致
+- [ ] 布局结构一致
+- [ ] 组件样式一致
 
 ### 功能完整性
 
-- 所有页面正常显示
-- 导航功能正常
-- 表单功能正常
-- 响应式正常
+- [ ] 所有页面正常显示
+- [ ] 导航功能正常
+- [ ] 表单功能正常
+- [ ] 响应式正常
 
 ### 内容适配
 
-- 内容已替换为客户内容
-- 语言已适配为中文
-- 品牌元素已替换
-
+- [ ] 内容已替换为客户内容
+- [ ] 语言已适配为中文
+- [ ] 品牌元素已替换
