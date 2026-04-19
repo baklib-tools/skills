@@ -40,6 +40,10 @@ npx skills add <your-org>/<your-repo> --skill software-dev-requirements-lifecycl
 
 若私有仓库**只含单个技能**且目录在仓库根（无 `skills/` 前缀），以你所用 `skills` CLI 版本说明为准，或改为「手动复制」方式。
 
+## 配合其他技能
+
+若需求以 **PDF** 或 **Office**（DOCX / PPTX / XLSX 等）提供，可先安装并遵循 **[`mineru-office-to-markdown`](https://github.com/baklib-tools/skills/blob/main/skills/mineru-office-to-markdown/SKILL.md)**（单独 `npx skills add … --skill mineru-office-to-markdown`），在本地用 MinerU 转为 Markdown 后再做需求 Intake。若尚未安装 MinerU，代理应说明环境成本并**征得同意**后再引导安装与转换（见 `SKILL.md` 中「PDF / Office 需求材料」）。
+
 ## 仓库位置
 
 本技能随 **[baklib-tools/skills](https://github.com/baklib-tools/skills)** 发布，与 Baklib 相关技能并列，便于统一 `npx skills add`。

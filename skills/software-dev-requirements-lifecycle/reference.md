@@ -4,6 +4,7 @@
 
 | 分册 | 内容 |
 |------|------|
+| [`mineru-office-to-markdown`](https://github.com/baklib-tools/skills/blob/main/skills/mineru-office-to-markdown/SKILL.md) | 同仓库技能：PDF / Office → 本地 Markdown；需求材料为附件时与本技能衔接 |
 | [references/document-map-and-paths.md](references/document-map-and-paths.md) | `docs/` 布局、文件命名、真源优先级示例 |
 | [references/templates.md](references/templates.md) | 用户故事、GWT、变更单、Definition of Done |
 | [references/help-center-information-architecture.md](references/help-center-information-architecture.md) | 帮助中心分层、首页导航、单篇 how-to 结构（对应计划 §D） |
