@@ -32,11 +32,26 @@
 {% render "tag", tag: my_tag %}
 ```
 
-**共享片段**：可使用系统内置片段：
+### 产品内置共享片段（`@shared/`）
+
+写法：`{% render '@shared/片段名' %}`（片段名**不含**前缀 `_` 与扩展名 `.liquid`）。
+
+- **机制**：以 `@shared/` 开头时，从**产品内置**共享片段读取，**不会**读当前主题自己的 `snippets/`。主题内普通 `{% render "foo" %}` 仍读本主题 `snippets/_foo.liquid`。
+- **当前内置清单**（与仓库 `themes/shared/snippets/` 一致；若增删文件，须同步更新本文、`docs/theme-dev/liquid-tags.md` 与 [shared-snippets-source.md](shared-snippets-source.md) 中的原文）：
+
+| `{% render %}` 写法 | 用途概要 |
+|---------------------|----------|
+| `{% render '@shared/paginate' %}` | 分页 UI（依赖上下文中已有 `paginate` 对象，通常放在 `paginate_tag` 块内或兼容上下文） |
+| `{% render '@shared/breadcrumb' %}` | 面包屑（需传入 `breadcrumb` 数组，项含 `link_text`、`path`） |
+| `{% render '@shared/empty' %}` | 空状态占位插画与布局（需传入 **`message`** 文案） |
 
 ```liquid
 {% render '@shared/paginate' %}
+{% render '@shared/breadcrumb', breadcrumb: page.breadcrumb %}
+{% render '@shared/empty', message: '暂无内容' %}
 ```
+
+**完整 Liquid 原文**（与实现逐字一致，便于复制到自有主题修改）：见 [shared-snippets-source.md](shared-snippets-source.md)。
 
 ---
 

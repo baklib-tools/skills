@@ -31,6 +31,7 @@ Baklib 站点前台使用 **[Liquid](https://shopify.github.io/liquid/)** 模板
 |------|------|
 | [directory-and-naming.md](references/directory-and-naming.md) | 主题目录、`templates`/`layout`/`snippets`/`statics`/`assets`/`config`/`locales`/`src` 与文件命名 |
 | [liquid-tags.md](references/liquid-tags.md) | 页面模板与布局中的自定义指令、`render`、`form_tag`、`track_event`、`paginate_tag`、`query`、`search` 等 |
+| [shared-snippets-source.md](references/shared-snippets-source.md) | `{% render '@shared/…' %}` 三枚内置片段与仓库 **`themes/shared/snippets/_*.liquid` 原文一致**，便于复制改写 |
 | [objects-and-drops.md](references/objects-and-drops.md) | 全局变量、按场景传入的变量、`site` / `page` / `tag` / `search` / `paginate` 等对象 |
 | [filters.md](references/filters.md) | 产品提供的自定义过滤器（含站点扩展） |
 | [limits-and-security.md](references/limits-and-security.md) | 主题名规则、分页上限、`strict_filters`、反向代理与路径前缀 |
