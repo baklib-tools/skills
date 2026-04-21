@@ -65,7 +65,7 @@ Token 配置优先级（从高到低）：
 1. **配置 Token**（二选一，推荐优先用 command ENV）：
    - **方式 A（推荐）**：将 Token 通过 MCP server 的 command 环境变量注入
    - **方式 B**：在 `~/.config/BAKLIB_MCP_TOKEN` 写入一行 `<key>:<secret>`（不要带引号、不要带 `KEY=` 前缀）
-2. **确保 MCP 服务器已在客户端声明**：按**所用 MCP 宿主**的文档编辑其 MCP 配置（配置文件路径因产品而异），确保已注册 Baklib MCP server；包版本建议 **`@baklib/baklib-mcp-server@0.4.0`** 或以上，以获得「按 purpose 获取 `signed_id`」等能力。
+2. **确保 MCP 服务器已在客户端声明**：按**所用 MCP 宿主**的文档编辑其 MCP 配置（配置文件路径因产品而异），确保已注册 Baklib MCP server；包版本建议 **`@baklib/baklib-mcp-server@0.5.2`** 或以上，以获得「按 purpose 获取 `signed_id`」等能力。
 3. **重载 MCP**：保存配置后按客户端要求**重启应用或刷新 MCP 连接**，使新配置生效。
 4. **验证工具可用**：在已连接 MCP 的**工具/函数列表**中应能看到 Baklib MCP 的相关工具（命名与参数字段以**当前版本工具描述**为准）。
 
@@ -196,7 +196,7 @@ printf '%s' '<key>:<secret>' > ~/.config/BAKLIB_MCP_TOKEN
             "command": "npx",
             "args": [
                 "-y",
-                "@baklib/baklib-mcp-server@0.4.0"
+                "@baklib/baklib-mcp-server@0.5.2"
             ],
             "env": {
                 "BAKLIB_MCP_TOKEN": "<key>:<secret>"

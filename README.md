@@ -67,6 +67,14 @@ git submodule update --init --recursive
 
 新增或更新子模块时请在变更说明中写清来源与用途；引用或摘录内容仍须遵守 [AGENTS.md](AGENTS.md) 中的脱敏与可移植性约定。
 
+## 其它技能（other-skills）
+
+与根目录 [`skills/`](skills/) 中面向 **`npx skills add`** 发布的技能并列，**[`other-skills/`](other-skills/)** 存放补充类技能（如开源应用源码导读、架构对照参考等）。默认**不**出现在 `npx skills add baklib-tools/skills --list` 的安装列表中；使用时可克隆本仓库后直接打开路径，或手动将目录拷贝到本地技能目录。
+
+| 技能 | 说明 |
+| ---- | ---- |
+| [fizzy-rails-patterns](other-skills/fizzy-rails-patterns/SKILL.md) | [37signals Fizzy](https://github.com/basecamp/fizzy)（Rails）功能域与代码重心、可迁移模式对照；配合仓库内 `feature-map.md` / `patterns.md` 渐进式阅读 |
+
 ## 技能列表
 
 
